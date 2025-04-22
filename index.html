@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title> Joy Das </title>
     <meta charset="utf-8" />
@@ -9,30 +11,62 @@
     <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/custom.min.css" />
     <link rel="shortcut icon" href="img/favicon.png" />
-    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'> <style>
+    <style>
         /* Existing style */
         .intro h3:before {
             /* Edit this with your name or anything else */
             content: 'Joy Das';
         }
 
-        /* --- NEW FONT STYLE --- */
-        /* Set the base font for the entire website body */
+        /* --- NEW FONT STYLE (NYT-like) --- */
+        /* Set the base font for the entire website body to Georgia/Times */
         body {
-            font-family: Georgia, Times, 'Times New Roman', serif; /* Use Georgia first, fallback to others */
-            /* Optional: You might want to slightly adjust base font size and line height */
+            font-family: Georgia, Times, 'Times New Roman', serif;
+            /* Optional: Adjust base font size and line height for better readability */
             /* font-size: 17px; */
-            /* line-height: 1.7; */
+            /* line-height: 1.6; */
         }
 
-        /* Optional: If you want headings to use a clean sans-serif font (like NYT often does online) */
-        /* Uncomment the lines below if desired */
-        /*
-        h1, h2, h3, h4, h5, h6 {
-            font-family: Arial, Helvetica, sans-serif; /* Or use 'Lato', sans-serif; if you prefer */
-        /* }
-        */
+        /* Exclude the daily quote section from the new font */
+        /* Revert quote text and author to a common sans-serif font, or inherit default */
+        .daily-quote blockquote,
+        .daily-quote cite {
+             font-family: Arial, Helvetica, sans-serif; /* Or specify a different font if preferred */
+             /* Ensure other quote styles are kept or reset if needed */
+             font-style: italic; /* Keep the italic style */
+        }
         /* --- END NEW FONT STYLE --- */
+
+
+        /* Style for article links */
+        .article-list li {
+            margin-bottom: 10px; /* Add some space between list items */
+        }
+
+        .article-list a {
+            text-decoration: none; /* Remove underline from links */
+            color: #333; /* Set link color */
+            font-weight: bold; /* Make link text bold */
+        }
+
+        .article-list a:hover {
+             text-decoration: underline; /* Add underline on hover */
+        }
+
+        .article-list .article-date {
+            font-size: 0.9em;
+            color: #777;
+            display: block; /* Make date appear on its own line */
+            margin-top: 2px;
+        }
+
+         .article-list .article-intro {
+            font-size: 0.95em;
+            color: #555;
+            margin-top: 5px;
+            line-height: 1.5;
+         }
+
 
     </style>
 </head>
@@ -67,52 +101,56 @@
 
     <div class="work section second" id="experiences">
         <div class="container">
-            <h1> International</h1>
-            <ul class="work-list">
-                <li> DATE</li>
-                <li><a href="#"> article ONE </a></li>
-                <li> brief intro of the article</li>
-            </ul>
-            <ul class="work-list">
-                <li> DATE</li>
-            </ul>
-            <ul class="work-list">
-                <li> DATE </li>
-                <li><a href="#"> Technology</a></li>
-                <li> REVIEWS </li>
-            </ul>
-        </div>
+            <h1> International Articles</h1>
+            <ul class="article-list">
+                 <li>
+                    <a href="international_article_one.html">Article One Title Here</a>
+                    <span class="article-date">Publication Date (e.g., April 22, 2025)</span>
+                    <p class="article-intro">Brief introduction or summary of International Article One...</p>
+                 </li>
+                 <li>
+                    <a href="international_article_two.html">Article Two Title Here</a>
+                    <span class="article-date">Publication Date (e.g., April 23, 2025)</span>
+                    <p class="article-intro">Brief introduction or summary of International Article Two...</p>
+                 </li>
+                </ul>
+            </div>
     </div>
 
     <div class="award section second" id="achievements">
         <div class="container">
-            <h1> LITERATURE </h1>
-            <ul class="award-list list-flat">
-                <li> Bangla </li>
-                <li> English </li>
-            </ul>
-            <ul class="award-list list-flat">
-                <li>December 2014</li>
-                <li>Audited X number of clients in only Y amount of time</li>
-                <li>Held a perfect attendance record</li>
-                <li>Were promoted after only X months in the role</li>
-            </ul>
-            <ul class="award-list list-flat">
-                <li>March 2014</li>
-                <li>Placed employees at X companies</li>
-                <li>United multiple teams post-merger</li>
-            </ul>
-        </div>
+            <h1> Literature Articles </h1>
+             <ul class="article-list list-flat">
+                <li>
+                    <a href="literature_article_one.html">Literature Article One Title</a>
+                     <span class="article-date">Publication Date</span>
+                     <p class="article-intro">Brief introduction or summary of Literature Article One...</p>
+                </li>
+                <li>
+                    <a href="literature_article_two.html">Literature Article Two Title</a>
+                     <span class="article-date">Publication Date</span>
+                     <p class="article-intro">Brief introduction or summary of Literature Article Two...</p>
+                </li>
+                </ul>
+             </div>
     </div>
 
     <div class="skills section second" id="skills">
         <div class="container">
-            <h1>Technology</h1>
-            <ul class="skill-list list-flat">
-                <li>Category </li>
-                <li>article name </li>
-            </ul>
-        </div>
+            <h1>Technology Articles</h1>
+             <ul class="article-list list-flat">
+                <li>
+                    <a href="technology_article_one.html">Technology Article One Title</a>
+                    <span class="article-date">Publication Date</span>
+                     <p class="article-intro">Brief introduction or summary of Technology Article One...</p>
+                </li>
+                 <li>
+                    <a href="technology_article_two.html">Technology Article Two Title</a>
+                    <span class="article-date">Publication Date</span>
+                     <p class="article-intro">Brief introduction or summary of Technology Article Two...</p>
+                </li>
+                </ul>
+            </div>
     </div>
 
     <div class="quote">
@@ -124,25 +162,25 @@
     <footer>
         <div class="container">
             <div class="units-row">
-                <div class="unit-50">
-                	<p>Handcrafted by Afnizar Nur Ghifari</p>     </div>
-                <div class="unit-50">
+                <div class="unit-50">
+                	<p>Handcrafted by Afnizar Nur Ghifari</p>    </div>
+                <div class="unit-50">
                     <ul class="social list-flat right">
                         <li><a href="mailto:afnizarhilmi@gmail.com"><i class="fa fa-send"></i></a></li>
                         <li><a href="http://twitter.com/flamekaizar"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="http://dribbble.com/flamekaizar"><i class="fa fa-dribbble"></i></a></li>
                         <li><a href="http://behance.com/flamekaizar"><i class="fa fa-behance"></i></a></li>
                     </ul>
-                </div>
+                </div>
             </div>
         </div>
     </footer>
 
     <script src="js/jquery.min.js"></script>
     <script src="js/typed.min.js"></script>
-    <script src="js/kube.min.js"></script>
-    <script src="js/site.js"></script>
-    <script>
+    <script src="js/kube.min.js"></script>
+    <script src="js/site.js"></script>
+    <script>
         // Typed.js animation (existing script)
 		function newTyped(){}$(function(){$("#typed").typed({
 		strings: ["far northern sky", "your galaxy", "everywhere"],
@@ -200,6 +238,6 @@
                 console.error("Could not find quote elements or selected quote.");
             }
         });
-    </script>
+    </script>
 </body>
 </html>
