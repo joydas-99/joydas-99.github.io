@@ -1,120 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Article</title>
-  <style>
-    body {
-      margin: 0;
-      background: #f5f5f5;
-      font-family: 'Georgia', 'Times New Roman', Times, serif;
-      color: #222; /* Softer than pure black */
-      display: flex;
-      justify-content: center;
-      align-items: flex-start; /* Keep content aligned to the top */
-      padding: 40px 20px; /* Reduced padding slightly */
-      min-height: 100vh;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Article</title>
+    <style>
+        body {
+            margin: 0;
+            background: #f5f5f5;
+            font-family: 'Georgia', 'Times New Roman', Times, serif;
+            color: #222; /* Softer than pure black */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Keep content aligned to the top */
+            padding: 40px 20px; /* Reduced padding slightly */
+            min-height: 100vh;
+        }
 
-    .page {
-      position: relative;
-      background: white;
-      width: 100%;
-      max-width: 800px;
-      min-height: 90vh;
-      /* Kept some styles like border, shadow, background for a paper feel */
-      border-right: 1px solid #ccc;
-      border-bottom: 1px solid #ccc;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      overflow: hidden;
-      border-radius: 10px;
-      /* Removed padding-top for spiral */
-      background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-    }
+        .page {
+            position: relative;
+            background: white;
+            width: 100%;
+            max-width: 800px; /* Max width of the content area */
+            min-height: 90vh;
+            /* Kept some styles like border, shadow, background for a paper feel */
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border-radius: 10px;
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+        }
 
-    /* Removed .spiral-left and .spiral-top styles */
+        .content {
+            position: relative;
+            z-index: 2;
+            /* Adjusted padding to make margins narrower */
+            /* Top, Right, Bottom, Left */
+            padding: 30px 30px 40px 30px; /* Reduced left/right padding from 40px to 30px */
+            line-height: 1.75;
+            font-size: 1.125rem; /* slightly bigger for easier reading */
 
-    .content {
-      position: relative;
-      z-index: 2;
-      /* Adjusted padding, especially on the left */
-      padding: 30px 40px 40px 40px; /* Adjusted left padding */
-      line-height: 1.75;
-      font-size: 1.125rem; /* slightly bigger for easier reading */
-    }
+            /* --- ADDED: Justify text --- */
+            text-align: justify;
+        }
 
-    .content h1 {
-      font-size: 2.5rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
-    }
+        /* --- ADDED: Ensure paragraphs and list items are also justified --- */
+        .content p, .content ul, .content ol, .content li {
+             text-align: justify;
+        }
 
-    .content h2 {
-      font-size: 1.75rem;
-      font-weight: bold;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
 
-    .content h3 {
-      font-size: 1.4rem;
-      margin-top: 1.5rem;
-      margin-bottom: 1rem;
-    }
+        .content h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+             text-align: left; /* Headings usually look better left-aligned */
+        }
 
-    .content p, .content ul, .content ol {
-      margin-top: 0;
-      margin-bottom: 1.5rem;
-    }
+        .content h2 {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+             text-align: left; /* Headings usually look better left-aligned */
+        }
 
-    .content ul, .content ol {
-      padding-left: 1.5rem;
-    }
+        .content h3 {
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+             text-align: left; /* Headings usually look better left-aligned */
+        }
 
-    .content em {
-      color: #555;
-    }
+        .content p, .content ul, .content ol {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
 
-    /* Optional: Style for links */
-    .content a {
-      color: #0056b3;
-      text-decoration: none;
-    }
+        .content ul, .content ol {
+            padding-left: 1.5rem;
+        }
 
-    .content a:hover {
-      text-decoration: underline;
-    }
-  </style>
+        .content em {
+            color: #555;
+        }
+
+        /* Optional: Style for links */
+        .content a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+
+        .content a:hover {
+            text-decoration: underline;
+        }
+
+         /* --- ADDED: Responsive adjustments for smaller screens --- */
+         @media (max-width: 600px) {
+            body {
+                padding: 20px 10px; /* Further reduce body padding on smaller screens */
+            }
+            .content {
+                /* Even narrower padding on very small screens */
+                padding: 20px 15px 30px 15px; /* Adjusted padding for smaller viewports */
+            }
+             .content h1 { font-size: 2rem; }
+             .content h2 { font-size: 1.5rem; }
+             .content h3 { font-size: 1.2rem; }
+             .content { font-size: 1rem; } /* Slightly smaller base font size */
+        }
+
+    </style>
 </head>
 <body>
 
 <div class="page">
-  <div class="content">
-    <h1>Article Title Goes Here</h1>
+    <div class="content">
+        <h1>Article Title Goes Here</h1>
 
-    <p><em>Write a short introduction paragraph here. Introduce the topic in a few lines, explaining what the article will cover.</em></p>
+        <p><em>Write a short introduction paragraph here. Introduce the topic in a few lines, explaining what the article will cover.</em></p>
 
-    <h2>Section 1: Introduction to the Topic</h2>
-    <p>Begin explaining the background of the topic. Keep your language friendly and informative. Add a few sentences to build interest and provide context to the reader.</p>
+        <h2>Section 1: Introduction to the Topic</h2>
+        <p>The English Romantic period, a transformative era in literary and cultural history, is generally considered to span from the late eighteenth century to the mid-nineteenth century. While precise dating remains debated among scholars, common starting points range from the 1780s to the publication of William Wordsworth and Samuel Taylor Coleridge's Lyrical Ballads in 1798, with endpoints often cited around the Reform Act of 1832, the accession of Queen Victoria in 1837, or even mid-century. For the purposes of English literature, the core period is frequently delineated as approximately 1785 to 1832, a half-century marked by profound artistic innovation and enduring consequence.</p>
 
-    <h2>Section 2: Main Discussion</h2>
-    <p>Start breaking down your main points here. Use paragraphs to organize different ideas. Make sure each paragraph flows logically into the next.</p>
+        <h2>Section 2: Main Discussion</h2>
+        <p>Start breaking down your main points here. Use paragraphs to organize different ideas. Make sure each paragraph flows logically into the next.</p>
 
-    <h3>Subheading: A Specific Detail</h3>
-    <p>Expand deeper into a particular point. Subheadings help guide the reader and make long articles easier to scan and understand.</p>
+        <h3>Subheading: A Specific Detail</h3>
+        <p>Expand deeper into a particular point. Subheadings help guide the reader and make long articles easier to scan and understand. Justified text can sometimes create larger gaps between words, especially with short lines. If this becomes an issue on mobile, you might consider keeping left alignment or using hyphenation.</p>
 
-    <h2>Section 3: Key Takeaways</h2>
-    <ul>
-      <li>Summarize the major points discussed.</li>
-      <li>Highlight any tips, lessons, or recommendations.</li>
-      <li>Keep the list short and clear.</li>
-    </ul>
+        <h2>Section 3: Key Takeaways</h2>
+        <ul>
+            <li>Summarize the major points discussed.</li>
+            <li>Highlight any tips, lessons, or recommendations.</li>
+            <li>Keep the list short and clear.</li>
+        </ul>
 
-    <h2>Conclusion</h2>
-    <p>Wrap up your article with a conclusion paragraph. Reflect back on what was discussed, offer final thoughts, or encourage the reader to take action.</p>
+        <h2>Conclusion</h2>
+        <p>Wrap up your article with a conclusion paragraph. Reflect back on what was discussed, offer final thoughts, or encourage the reader to take action.</p>
 
-  </div>
+    </div>
 </div>
 
 </body>
