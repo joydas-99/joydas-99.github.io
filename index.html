@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html>
 <head>
     <title> Joy Das </title>
     <meta charset="utf-8" />
@@ -11,144 +9,197 @@
     <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/custom.min.css" />
     <link rel="shortcut icon" href="img/favicon.png" />
-	<link href='http://fonts.googleapis.com/css?family=Playfair+Display+SC:700' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-	<style>
-		.intro h3:before {
-			/* Edit this with your name or anything else */
-			content: 'Joy Das';
-		}
-	</style>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'> <style>
+        /* Existing style */
+        .intro h3:before {
+            /* Edit this with your name or anything else */
+            content: 'Joy Das';
+        }
+
+        /* --- NEW FONT STYLE --- */
+        /* Set the base font for the entire website body */
+        body {
+            font-family: Georgia, Times, 'Times New Roman', serif; /* Use Georgia first, fallback to others */
+            /* Optional: You might want to slightly adjust base font size and line height */
+            /* font-size: 17px; */
+            /* line-height: 1.7; */
+        }
+
+        /* Optional: If you want headings to use a clean sans-serif font (like NYT often does online) */
+        /* Uncomment the lines below if desired */
+        /*
+        h1, h2, h3, h4, h5, h6 {
+            font-family: Arial, Helvetica, sans-serif; /* Or use 'Lato', sans-serif; if you prefer */
+        /* }
+        */
+        /* --- END NEW FONT STYLE --- */
+
+    </style>
 </head>
 <body>
-	<!-- Navigation -->
-	<div class="main-nav">
-		<div class="container">
-			<header class="group top-nav">
-				<div class="navigation-toggle" data-tools="navigation-toggle" data-target="#navbar-1">
-				    <span class="logo">DRACO</span>
-				</div>
-			    <nav id="navbar-1" class="navbar item-nav">
-				    <ul>
-				        <li class="active"><a href="#about">About</a></li>
-				        <li><a href="#experiences">Experiences</a></li>
-				        <li><a href="#achievements">Achievements</a></li>
-				        <li><a href="#skills">Skills</a></li>
-				    </ul>
-				</nav>
-			</header>
-		</div>
-	</div>
+    <div class="daily-quote section" style="padding: 30px 0; text-align: center; background-color: #f4f4f4;">
+        <div class="container">
+            <h2>Quote of the Day</h2>
+            <blockquote id="quote-text" style="font-size: 1.4em; margin-bottom: 10px; font-style: italic;">
+                Loading quote...
+            </blockquote>
+            <cite id="quote-author" style="font-size: 1.1em; display: block;">
+                </cite>
+        </div>
+    </div>
 
-	<!-- Introduction -->
-	<div class="intro section" id="about">
-		<div class="container">
-			<p>Hi, I’m Joy Das</p>
-			<div class="units-row units-split wrap">
-				<div class="unit-20">
-					<img src="img/Untitled design (3).png" alt="Avatar">
-				</div>
-				<div class="unit-80">
-					<h1>I live in<br><span id="typed"></span></h1>					
-				</div>
-				<p>
-					Not out of passion but of sheer interest and curiosity has impelled me to create this new medium to communicate and share my views with the rest of the world.
-				</p>				
-			</div>
-		</div>
-	</div>
+    <div class="intro section" id="about">
+        <div class="container">
+            <p>Hi, I’m Joy Das</p>
+            <div class="units-row units-split wrap">
+                <div class="unit-20">
+                    <img src="img/Untitled design (3).png" alt="Avatar">
+                </div>
+                <div class="unit-80">
+                    <h1>I live in<br><span id="typed"></span></h1>
+                </div>
+                <p>
+                    Not out of passion but of sheer interest and curiosity has impelled me to create this new medium to communicate and share my views with the rest of the world.
+                </p>
+            </div>
+        </div>
+    </div>
 
-	<!-- Work Experience -->
-	<div class="work section second" id="experiences">
-		<div class="container">
-			<h1>Work<br> International</h1>
-			<ul class="work-list">
-				<li> DATE</li>
-				<li><a href="#"> article ONE </a></li>
-				<li> brief intro of the article</li>
-			</ul>
-			<ul class="work-list">
-				<li> DATE</li>
-	
-				
-			</ul>
-			<ul class="work-list">
-				<li> DATE </li>
-				<li><a href="#"> Technology</a></li>
-				<li> REVIEWS </li>
-			</ul>
-		</div>
-	</div>
+    <div class="work section second" id="experiences">
+        <div class="container">
+            <h1> International</h1>
+            <ul class="work-list">
+                <li> DATE</li>
+                <li><a href="#"> article ONE </a></li>
+                <li> brief intro of the article</li>
+            </ul>
+            <ul class="work-list">
+                <li> DATE</li>
+            </ul>
+            <ul class="work-list">
+                <li> DATE </li>
+                <li><a href="#"> Technology</a></li>
+                <li> REVIEWS </li>
+            </ul>
+        </div>
+    </div>
 
-	<!-- Award & Achievements -->
-	<div class="award section second" id="achievements">
-		<div class="container">
-			<h1>Award &amp;<br> LITERATURE </h1>
-			<ul class="award-list list-flat">
-				<li> Bangla </li>
-				<li> English </li>
-			</ul>
-			<ul class="award-list list-flat">
-				<li>December 2014</li>
-				<li>Audited X number of clients in only Y amount of time</li>
-				<li>Held a perfect attendance record</li>
-				<li>Were promoted after only X months in the role</li>
-			</ul>
-			<ul class="award-list list-flat">
-				<li>March 2014</li>
-				<li>Placed employees at X companies</li>
-				<li>United multiple teams post-merger</li>
-			</ul>
-		</div>
-	</div>
+    <div class="award section second" id="achievements">
+        <div class="container">
+            <h1> LITERATURE </h1>
+            <ul class="award-list list-flat">
+                <li> Bangla </li>
+                <li> English </li>
+            </ul>
+            <ul class="award-list list-flat">
+                <li>December 2014</li>
+                <li>Audited X number of clients in only Y amount of time</li>
+                <li>Held a perfect attendance record</li>
+                <li>Were promoted after only X months in the role</li>
+            </ul>
+            <ul class="award-list list-flat">
+                <li>March 2014</li>
+                <li>Placed employees at X companies</li>
+                <li>United multiple teams post-merger</li>
+            </ul>
+        </div>
+    </div>
 
-	<!-- Technical Skills -->
-	<div class="skills section second" id="skills">
-		<div class="container">
-			<h1>Technology</h1>
-			<ul class="skill-list list-flat">
-				<li>Category </li>
-				<li>article name </li>
-			</ul>
-		</div>
-	</div>
+    <div class="skills section second" id="skills">
+        <div class="container">
+            <h1>Technology</h1>
+            <ul class="skill-list list-flat">
+                <li>Category </li>
+                <li>article name </li>
+            </ul>
+        </div>
+    </div>
 
-	<!-- Quote -->
-	<div class="quote">
-		<div class="container text-centered">
-			<h1>fight against the ugliness.</h1>
-		</div>
-	</div>
+    <div class="quote">
+        <div class="container text-centered">
+            <h1>fight against the ugliness.</h1>
+        </div>
+    </div>
 
-	<footer>
-		<div class="container">
-			<div class="units-row">
-			    <div class="unit-50">
-			    	<p>Handcrafted by Afnizar Nur Ghifari</p>
-			    </div>
-			    <div class="unit-50">
-					<ul class="social list-flat right">
-						<li><a href="mailto:afnizarhilmi@gmail.com"><i class="fa fa-send"></i></a></li>
-						<li><a href="http://twitter.com/flamekaizar"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="http://dribbble.com/flamekaizar"><i class="fa fa-dribbble"></i></a></li>
-						<li><a href="http://behance.com/flamekaizar"><i class="fa fa-behance"></i></a></li>
-					</ul>
-			    </div>
-			</div>
-		</div>
-	</footer>
+    <footer>
+        <div class="container">
+            <div class="units-row">
+                <div class="unit-50">
+                	<p>Handcrafted by Afnizar Nur Ghifari</p>     </div>
+                <div class="unit-50">
+                    <ul class="social list-flat right">
+                        <li><a href="mailto:afnizarhilmi@gmail.com"><i class="fa fa-send"></i></a></li>
+                        <li><a href="http://twitter.com/flamekaizar"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="http://dribbble.com/flamekaizar"><i class="fa fa-dribbble"></i></a></li>
+                        <li><a href="http://behance.com/flamekaizar"><i class="fa fa-behance"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-	<!-- Javascript -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/typed.min.js"></script>
-    <script src="js/kube.min.js"></script>
-    <script src="js/site.js"></script>
-    <script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/typed.min.js"></script>
+    <script src="js/kube.min.js"></script>
+    <script src="js/site.js"></script>
+    <script>
+        // Typed.js animation (existing script)
 		function newTyped(){}$(function(){$("#typed").typed({
-		// Change to edit type effect
 		strings: ["far northern sky", "your galaxy", "everywhere"],
-
 		typeSpeed:90,backDelay:700,contentType:"html",loop:!0,resetCallback:function(){newTyped()}}),$(".reset").click(function(){$("#typed").typed("reset")})});
-    </script>
+
+        // --- Daily Quote Logic ---
+        document.addEventListener('DOMContentLoaded', function() {
+            // ---!!! IMPORTANT: Add your 365 quotes here !!!---
+            // This is a small sample list. You need to expand this list significantly.
+            // Each quote is an object with 'text' and 'author' properties.
+            const quotes = [
+                { text: "The only true wisdom is in knowing you know nothing.", author: "Socrates" },
+                { text: "The unexamined life is not worth living.", author: "Socrates" },
+                { text: "An investment in knowledge pays the best interest.", author: "Benjamin Franklin" },
+                { text: "The only thing we have to fear is fear itself.", author: "Franklin D. Roosevelt" },
+                { text: "Strive not to be a success, but rather to be of value.", author: "Albert Einstein" },
+                { text: "Imagination is more important than knowledge.", author: "Albert Einstein" },
+                { text: "The mind is everything. What you think you become.", author: "Buddha" },
+                { text: "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.", author: "Ralph Waldo Emerson" },
+                { text: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius" },
+                { text: "Our greatest glory is not in never failing, but in rising up every time we fail.", author: "Confucius" },
+                { text: "Knowing yourself is the beginning of all wisdom.", author: "Aristotle" },
+                { text: "Educating the mind without educating the heart is no education at all.", author: "Aristotle" },
+                { text: "The journey of a thousand miles begins with a single step.", author: "Lao Tzu" },
+                { text: "That which does not kill us makes us stronger.", author: "Friedrich Nietzsche" },
+                { text: "Happiness depends upon ourselves.", author: "Aristotle" },
+                // Add many more quotes here to reach 365...
+                // Example: { text: "Quote text here.", author: "Author Name" },
+            ];
+
+            // Get current date
+            const today = new Date();
+
+            // Calculate the day of the year (1-366)
+            const startOfYear = new Date(today.getFullYear(), 0, 0);
+            const diff = today - startOfYear;
+            const oneDay = 1000 * 60 * 60 * 24;
+            const dayOfYear = Math.floor(diff / oneDay); // This gives day number 1 to 366
+
+            // Select quote based on the day of the year
+            // The modulo operator (%) ensures we loop back to the beginning if dayOfYear > number of quotes
+            const quoteIndex = (dayOfYear - 1) % quotes.length; // Adjust index to be 0-based
+            const selectedQuote = quotes[quoteIndex];
+
+            // Update the HTML elements
+            const quoteTextElement = document.getElementById('quote-text');
+            const quoteAuthorElement = document.getElementById('quote-author');
+
+            if (quoteTextElement && quoteAuthorElement && selectedQuote) {
+                quoteTextElement.textContent = `"${selectedQuote.text}"`;
+                quoteAuthorElement.textContent = `- ${selectedQuote.author}`;
+            } else {
+                // Fallback if elements or quote not found
+                if (quoteTextElement) quoteTextElement.textContent = "Could not load quote.";
+                console.error("Could not find quote elements or selected quote.");
+            }
+        });
+    </script>
 </body>
 </html>
