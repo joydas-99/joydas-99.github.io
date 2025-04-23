@@ -15,10 +15,10 @@
             align-items: flex-start; /* Keep content aligned to the top */
             padding: 40px 20px; /* Reduced padding slightly */
             min-height: 100vh;
-            box-sizing: border-box; /* Include padding in element's total width and height */
+            box-sizing: border-box;
         }
 
-        /* --- Progress Bar Styles (Existing) --- */
+        /* Progress Bar Styles */
         #progress-bar {
             position: fixed;
             top: 0;
@@ -29,25 +29,23 @@
             z-index: 1000;
             transition: width 0.1s ease-out;
         }
-        /* --- END Progress Bar Styles --- */
 
-        /* --- NEW: Focus Mode Toggle Button Styles --- */
+        /* Focus Mode Toggle Button Styles */
         #focus-mode-toggle {
-            position: absolute; /* Position relative to .page */
-            top: 15px; /* Adjust vertical position */
-            right: 15px; /* Adjust horizontal position */
-            z-index: 10; /* Below progress bar, above content */
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 10;
+            background-color: rgba(255, 255, 255, 0.8);
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 5px 10px;
             font-size: 0.8em;
             cursor: pointer;
             transition: background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
-            font-family: inherit; /* Use inherited font */
-            /* Optional: Hide button when not in focus mode (JS will toggle opacity) */
-            /* opacity: 0; */
-            /* pointer-events: none; */
+            font-family: inherit;
+            opacity: 0; /* Start hidden */
+            pointer-events: none; /* Cannot click when hidden */
         }
 
         #focus-mode-toggle:hover {
@@ -63,9 +61,6 @@
             opacity: 1;
             pointer-events: auto;
         }
-
-        /* --- END NEW --- */
-
 
         .page {
             position: relative;
@@ -83,7 +78,7 @@
             flex-direction: column;
         }
 
-        /* Navigation styles (Existing) */
+        /* Navigation styles */
         .page-nav {
             padding: 20px 30px 10px 30px;
             border-bottom: 1px solid #ddd;
@@ -104,13 +99,12 @@
             color: #000;
             text-decoration: underline;
         }
-        /* END Navigation styles */
 
-        /* Audio section styles (Existing) */
+        /* Audio section styles */
         .article-audio {
             padding: 0px 0 8px 0;
             border-bottom: 1px dashed #ccc;
-            margin-bottom: 15px; /* Slightly increased space below audio */
+            margin-bottom: 15px;
             margin-top: 0px;
         }
 
@@ -125,7 +119,6 @@
             width: 100%;
             margin-top: 5px;
         }
-        /* END Audio section styles */
 
         .content {
             position: relative;
@@ -137,7 +130,7 @@
             flex-grow: 1;
         }
 
-        /* Ensure paragraphs and list items are justified (Existing) */
+        /* Ensure paragraphs and list items are justified */
         .content p, .content ul, .content ol, .content li {
              text-align: justify;
              margin-bottom: 1.5rem;
@@ -148,14 +141,29 @@
              padding-left: 1.5rem;
          }
 
-        /* Article Meta Styles (Existing) */
+        /* Article Meta Styles */
         .article-meta {
             font-size: 0.9em;
             color: #666;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.5rem;
             text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
         }
-        /* END Article Meta Styles */
+
+         .article-meta span {
+             flex-shrink: 0;
+         }
+
+        /* Reading Time Style */
+         .reading-time {
+             font-size: 0.9em;
+             color: #666;
+             text-align: right;
+             white-space: nowrap;
+         }
 
 
         .content h1 {
@@ -187,7 +195,7 @@
             color: #555;
         }
 
-        /* Link Styles (Existing + Refined Hover) */
+        /* Link Styles */
         .content a {
             color: #0056b3;
             text-decoration: underline;
@@ -199,9 +207,8 @@
             color: #003f8f;
             text-decoration-color: #0056b3;
         }
-        /* END Link Styles */
 
-        /* HR Style (Existing) */
+        /* HR Style */
         .content hr {
             border: none;
             height: 1px;
@@ -209,9 +216,8 @@
             margin: 3rem auto;
             width: 50%;
         }
-        /* END HR Style */
 
-         /* Blockquote Style (Existing) */
+         /* Blockquote Style */
          .content blockquote {
              margin: 2rem 0;
              padding: 1rem 1.5rem;
@@ -229,10 +235,8 @@
          .content blockquote p:last-child {
              margin-bottom: 0;
          }
-         /* END Blockquote Style */
 
-
-         /* Footer Styles (Existing) */
+         /* Footer Styles */
          .page-footer {
              padding: 20px 30px;
              border-top: 1px solid #ddd;
@@ -253,30 +257,44 @@
              color: #222;
              text-decoration: underline;
          }
-         /* END Footer Styles */
 
-        /* --- NEW: Focus Mode Styles --- */
-        /* This class is added to the <body> when focus mode is active */
+        /* Focus Mode Styles */
         body.focus-mode-active .content > *:not(.active-block) {
-            opacity: 0.3; /* Dim all direct children of .content that are NOT active */
-            transition: opacity 0.3s ease; /* Smooth transition for dimming */
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
         }
 
         body.focus-mode-active .content .active-block {
-            opacity: 1; /* Keep the active block fully visible */
-            /* Optional: Add subtle styling to the active block */
-            /* background-color: rgba(0, 0, 0, 0.03); /* Very subtle grey background */
-            /* padding: 10px 0; /* Add some vertical padding */
+            opacity: 1;
         }
 
-        /* Ensure active block children are also fully visible */
         body.focus-mode-active .content .active-block * {
-            opacity: 1 !important; /* Force children opacity to 1 */
+            opacity: 1 !important;
         }
-        /* --- END NEW --- */
+
+        /* Dynamic Drop Cap Style */
+        .drop-cap {
+            float: left;
+            font-size: 4em;
+            line-height: 0.8;
+            margin-right: 0.05em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Ensure drop cap styles don't break on very small screens if desired */
+        @media (max-width: 400px) {
+            .drop-cap {
+                float: none;
+                font-size: 2em;
+                line-height: 1;
+                margin-right: 0;
+                display: inline;
+            }
+        }
 
 
-         /* Responsive adjustments for smaller screens (Existing + Adjustments) */
+         /* Responsive adjustments for smaller screens */
          @media (max-width: 600px) {
              body {
                  padding: 20px 10px;
@@ -307,34 +325,38 @@
              }
              .article-meta {
                 margin-bottom: 1rem;
+                 flex-direction: column; /* Stack meta and reading time */
+                 align-items: flex-start; /* Align stack to the left */
              }
+             .reading-time {
+                 text-align: left; /* Align left when stacked */
+                 margin-top: 5px; /* Add space above */
+             }
+
               .content h1 { font-size: 2rem; margin-bottom: 0.4rem; }
               .content h2 { font-size: 1.5rem; margin-top: 1.8rem; margin-bottom: 0.8rem; }
               .content h3 { font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.7rem; }
               .content { font-size: 1rem; }
               .content p, .content ul, .content ol, .content li { margin-bottom: 1.2rem; }
 
-              /* Blockquote Mobile Adjustments (Existing) */
+              /* Blockquote Mobile Adjustments */
               .content blockquote {
                  margin: 1.5rem 0;
                  padding: 0.8rem 1rem;
               }
-              /* END Blockquote Mobile Adjustments */
 
-              /* Footer Mobile Adjustments (Existing) */
+              /* Footer Mobile Adjustments */
               .page-footer {
                  padding: 15px 15px;
               }
-              /* END Footer Mobile Adjustments */
 
-              /* --- NEW: Focus Mode Toggle Button Mobile --- */
+              /* Focus Mode Toggle Button Mobile */
               #focus-mode-toggle {
-                  top: 10px; /* Adjust position */
+                  top: 10px;
                   right: 10px;
-                  padding: 3px 8px; /* Smaller padding */
-                  font-size: 0.7em; /* Smaller text */
+                  padding: 3px 8px;
+                  font-size: 0.7em;
               }
-               /* --- END NEW --- */
          }
 
     </style>
@@ -342,7 +364,8 @@
 <body>
 
     <div id="progress-bar"></div>
-    <div class="page">
+
+<div class="page">
     <div class="page-nav">
         <a href="index.html">Home</a>
         <a href="index.html#skills">Technology</a>
@@ -350,12 +373,17 @@
     </div>
 
     <button id="focus-mode-toggle" title="Toggle Focus Mode">Focus Mode</button>
+
     <div class="content">
         <h1>Article Title Goes Here</h1>
 
         <div class="article-meta">
-            By [Your Name] on [Date of Publication]
+            <span>By [Your Name]</span>
+            <span>On [Date of Publication]</span>
+            <span class="reading-time"></span>
         </div>
+
+
         <p><em>Write a short introduction paragraph here. Introduce the topic in a few lines, explaining what the article will cover.</em></p>
 
         <div class="article-audio">
@@ -367,8 +395,7 @@
         </div>
 
         <h2>Section 1: Introduction to the Topic</h2>
-        <p>The English Romantic period, a transformative era in literary and cultural history, is generally considered to span from the late eighteenth century to the mid-nineteenth century. While precise dating remains debated among scholars, common starting points range from the 1780s to the publication of William Wordsworth and Samuel Taylor Coleridge's Lyrical Ballads in 1798, with endpoints often cited around the Reform Act of 1832, the accession of Queen Victoria in 1837, or even mid-century. For the purposes of English literature, the core period is frequently delineated as approximately 1785 to 1832, a half-century marked by profound artistic innovation and enduring consequence.</p>
-
+        <p class="drop-cap-target">The English Romantic period, a transformative era in literary and cultural history, is generally considered to span from the late eighteenth century to the mid-nineteenth century. While precise dating remains debated among scholars, common starting points range from the 1780s to the publication of William Wordsworth and Samuel Taylor Coleridge's Lyrical Ballads in 1798, with endpoints often cited around the Reform Act of 1832, the accession of Queen Victoria in 1837, or even mid-century. For the purposes of English literature, the core period is frequently delineated as approximately 1785 to 1832, a half-century marked by profound artistic innovation and enduring consequence.</p>
         <h2>Section 2: Main Discussion</h2>
         <p>Start breaking down your main points here. Use paragraphs to organize different ideas. Make sure each paragraph flows logically into the next. Here is a link example: <a href="#">This is an example link</a>.</p>
 
@@ -381,10 +408,12 @@
              <p>This is an example of a blockquote. It's useful for highlighting quotes from other sources or for visually separating important text.</p>
              <p>Quotes can span multiple paragraphs.</p>
          </blockquote>
-         <p>And yet another paragraph. Curabitur sit amet nunc at erat facilisis tincidunt. Sed et dolor vitae nisi tristique finibus. Aliquam erat volutpat. Sed malesuada massa nec risus bibendum, sit amet bibendum lorem cursus. Donec finibus, felis nec ultricies ullamcorper, lectus nisl ultrices nisl, vel fermentum est velit at justo. Maecenas id augue vitae justo luctus facilisis. Fusce vel ex vel velit volutpat vestibulum.</p>
+
+        <p>And yet another paragraph. Curabitur sit amet nunc at erat facilisis tincidunt. Sed et dolor vitae nisi tristique finibus. Aliquam erat volutpat. Sed malesuada massa nec risus bibendum, sit amet bibendum lorem cursus. Donec finibus, felis nec ultricies ullamcorper, lectus nisl ultrices nisl, vel fermentum est velit at justo. Maecenas id augue vitae justo luctus facilisis. Fusce vel ex vel velit volutpat vestibulum.</p>
         <p>More text to fill space. In hac habitasse platea dictumst. Aenean ac dolor sit amet justo ultricies dignissim non sit amet turpis. Sed sed ex at justo feugiat facilisis. Mauris nec quam eget erat vulputate posuere. Quisque et sem nec elit blandit efficitur. Suspendisse potenti.</p>
 
         <hr>
+
         <h2>Section 3: Key Takeaways</h2>
         <ul>
             <li>Summarize the major points discussed.</li>
@@ -403,11 +432,13 @@
         <p>&copy; 2023 Your Name/Blog Name. All rights reserved.</p>
         <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
     </footer>
-    </div>
+
+</div>
 
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
-        // --- Progress Bar Logic (Existing) ---
+
+        // --- Progress Bar Logic ---
         const progressBar = document.getElementById('progress-bar');
 
         function updateProgressBar() {
@@ -419,11 +450,10 @@
 
             if (maxScroll <= 0) {
                 progressBar.style.width = '100%';
-                return;
+            } else {
+                 const progress = (scrollPos / maxScroll) * 100;
+                 progressBar.style.width = Math.max(0, Math.min(progress, 100)) + '%';
             }
-
-            const progress = (scrollPos / maxScroll) * 100;
-            progressBar.style.width = Math.max(0, Math.min(progress, 100)) + '%';
 
              // Add class to body when scrolled down slightly to show focus button
             if (scrollPos > 50) { // Adjust 50px threshold as needed
@@ -440,7 +470,7 @@
         // --- END Progress Bar Logic ---
 
 
-        // --- NEW: Focus Mode Logic ---
+        // --- Focus Mode Logic ---
         const focusToggleBtn = document.getElementById('focus-mode-toggle');
         const contentDiv = document.querySelector('.content');
         // Select all direct block-level children of .content to consider as "blocks"
@@ -449,10 +479,8 @@
         let isFocusModeActive = false;
         let lastActiveBlock = null;
 
-        // Function to find the currently active content block
         function findActiveBlock() {
             const viewportHeight = window.innerHeight;
-            // Define the activation threshold near the top of the viewport
             const activationThreshold = 100; // Adjust as needed (e.g., 100px from top)
             let activeBlock = null;
 
@@ -460,48 +488,37 @@
                 const block = contentBlocks[i];
                 const rect = block.getBoundingClientRect();
 
-                // Check if the top edge of the block is within the activation threshold from the top
-                // AND the bottom edge is below the threshold (so the block has some height in view)
                 if (rect.top <= activationThreshold && rect.bottom > activationThreshold) {
                     activeBlock = block;
-                    break; // Found the first block that crosses the threshold
+                    break;
                 }
 
-                 // Also check if the block is fully below the threshold but visible in the viewport,
-                 // and it's the first such block (e.g., just scrolling into view)
                  if (rect.top > activationThreshold && rect.top < viewportHeight) {
                      activeBlock = block;
-                     break; // Found the first one entering the viewport below the threshold
+                     break;
                  }
             }
 
-            // Fallback for the very top and very bottom of the document
-            // If no block crosses the threshold, check if we are at the extreme top or bottom
             if (!activeBlock && window.scrollY === 0 && contentBlocks.length > 0) {
-                 activeBlock = contentBlocks[0]; // First block if at the very top
+                 activeBlock = contentBlocks[0];
             } else if (!activeBlock && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight && contentBlocks.length > 0) {
-                activeBlock = contentBlocks[contentBlocks.length - 1]; // Last block if at the very bottom
+                activeBlock = contentBlocks[contentBlocks.length - 1];
             }
-
 
             return activeBlock;
         }
 
-        // Function to handle scroll events in focus mode
         function handleFocusScroll() {
             const activeBlock = findActiveBlock();
 
-            // If the active block has changed
             if (lastActiveBlock && lastActiveBlock !== activeBlock) {
                 lastActiveBlock.classList.remove('active-block');
             }
 
-            // Add the active class to the new active block
             if (activeBlock) {
                 activeBlock.classList.add('active-block');
-                lastActiveBlock = activeBlock; // Update last active block
+                lastActiveBlock = activeBlock;
             } else {
-                 // Handle case where no block is found (shouldn't happen often with fallbacks)
                  if (lastActiveBlock) {
                       lastActiveBlock.classList.remove('active-block');
                  }
@@ -509,34 +526,85 @@
             }
         }
 
-        // Function to toggle focus mode on and off
         function toggleFocusMode() {
             isFocusModeActive = !isFocusModeActive;
-            document.body.classList.toggle('focus-mode-active', isFocusModeActive); // Toggle class on the body
-            focusToggleBtn.textContent = isFocusModeActive ? 'Exit Focus Mode' : 'Focus Mode'; // Change button text
-            focusToggleBtn.setAttribute('title', isFocusModeActive ? 'Exit Focus Mode' : 'Toggle Focus Mode'); // Change button title
+            document.body.classList.toggle('focus-mode-active', isFocusModeActive);
+            focusToggleBtn.textContent = isFocusModeActive ? 'Exit Focus Mode' : 'Focus Mode';
+            focusToggleBtn.setAttribute('title', isFocusModeActive ? 'Exit Focus Mode' : 'Toggle Focus Mode');
+
 
             if (isFocusModeActive) {
-                // Start listening for scroll events to update the active block
                 window.addEventListener('scroll', handleFocusScroll);
-                // Initial call to set the active block when activating
-                handleFocusScroll();
+                handleFocusScroll(); // Initial call
             } else {
-                // Stop listening for scroll events in focus mode
                 window.removeEventListener('scroll', handleFocusScroll);
-                // Clean up the active class when exiting
                 if (lastActiveBlock) {
                     lastActiveBlock.classList.remove('active-block');
                 }
-                lastActiveBlock = null; // Reset last active block
+                lastActiveBlock = null;
             }
         }
 
-        // Add click listener to the toggle button
         focusToggleBtn.addEventListener('click', toggleFocusMode);
+        // --- END Focus Mode Logic ---
 
+
+        // --- Estimated Reading Time Logic ---
+        const readingTimeElement = document.querySelector('.reading-time');
+        const wordsPerMinute = 225; // Average reading speed
+
+        function calculateReadingTime() {
+            // Get text content from the main article content area
+            const articleText = contentDiv.textContent;
+
+            // Simple word count by splitting text by spaces and filtering empty strings
+            const wordCount = articleText.trim().split(/\s+/).filter(word => word.length > 0).length;
+
+            // Calculate minutes, rounding up
+            const minutes = Math.ceil(wordCount / wordsPerMinute);
+
+            // Update the HTML element
+            if (readingTimeElement) {
+                 readingTimeElement.textContent = `${minutes} min read`;
+            }
+        }
+
+        calculateReadingTime();
+        // --- END Estimated Reading Time Logic ---
+
+
+        // --- NEW: Dynamic Drop Cap Logic - MODIFIED TO TARGET SPECIFIC CLASS ---
+         function applyDropCap() {
+            // Find the paragraph with the class "drop-cap-target"
+            const targetParagraph = contentDiv.querySelector('.drop-cap-target');
+
+            // Ensure the target paragraph exists and has text content
+            if (targetParagraph && targetParagraph.textContent.trim().length > 0) {
+                const text = targetParagraph.textContent.trim();
+                const firstLetter = text.charAt(0);
+
+                // Check if the first character is a letter
+                if (firstLetter.match(/[a-zA-Z]/)) {
+                    // Temporarily store inner HTML to avoid issues with nodes
+                    const originalInnerHTML = targetParagraph.innerHTML;
+                    // Wrap the first letter in a span
+                    const wrappedLetter = `<span class="drop-cap">${firstLetter}</span>`;
+                    // Find the index of the first letter in the original text content
+                    const firstLetterIndex = targetParagraph.textContent.indexOf(firstLetter); // Use textContent for index
+
+                    // Reconstruct the HTML with the wrapped letter
+                    // This is a bit more robust than substring on innerHTML
+                    targetParagraph.innerHTML = wrappedLetter + originalInnerHTML.substring(firstLetterIndex + 1);
+
+                }
+            }
+        }
+
+        // Apply the drop cap after the DOM is ready
+        applyDropCap();
         // --- END NEW ---
-    });
+
+    }); // End DOMContentLoaded
 </script>
 </body>
 </html>
