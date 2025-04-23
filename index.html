@@ -18,8 +18,7 @@
             /* content: 'Joy Das'; */
         /* } */ /* Removed as per requirement to replace with banner */
 
-        /* --- NEW FONT STYLE (NYT-like) --- */
-        /* Set the base font for the entire website body to Georgia/Times */
+        /* --- NEW FONT STYLE (Body Font - often serif for news sites) --- */
         body {
             font-family: Georgia, Times, 'Times New Roman', serif;
             /* Optional: Adjust base font size and line height for better readability */
@@ -67,30 +66,27 @@
             line-height: 1.5;
          }
 
-         /* --- The Atlantic-like Banner Style --- */
+         /* --- Refined The Atlantic-like Banner Style --- */
          .atlantic-banner {
              text-align: center;
-             padding: 15px 0; /* Slightly less padding than NYT example */
+             padding: 15px 0;
              margin-bottom: 30px; /* Space after the banner */
              border-top: 1px solid #000; /* Optional: Add a line above */
              border-bottom: 1px solid #000; /* Optional: Add a line below */
          }
 
          .atlantic-banner h1 {
-             font-family: 'Georgia', serif; /* Georgia is a good substitute */
-             font-size: 3em; /* Adjust size as needed, slightly smaller than NYT example */
-             font-weight: 700; /* A good bold weight */
+             /* Using a font stack that includes Times New Roman and potentially others */
+             font-family: "Times New Roman", Times, serif;
+             font-size: 2.8em; /* Slightly reduced size */
+             font-weight: normal; /* Use normal weight, not bold */
              margin: 0;
              padding: 0;
              color: #000;
-             text-transform: uppercase; /* The Atlantic often uses uppercase for their main logo */
+             text-transform: uppercase; /* Keep uppercase */
+             letter-spacing: 0.5px; /* Slightly positive letter spacing */
          }
-
-         /* Optional: Add a slightly thicker line below if desired */
-         /* .atlantic-banner { border-bottom: none; } */
-         /* .atlantic-banner h1 { padding-bottom: 10px; border-bottom: 2px solid #000; } */
-
-         /* --- END The Atlantic-like Banner Style --- */
+         /* --- END Refined The Atlantic-like Banner Style --- */
 
 
     </style>
@@ -108,7 +104,7 @@
                     <img src="img/Untitled design (3).png" alt="Avatar">
                 </div>
                 <div class="unit-80">
-                    <h1>I live in<br><span id="typed"></span></h1>
+                    <h1> Life is <br><span id="typed"></span></h1>
                 </div>
                 <p>
                     Not of passion but out of sheer interest and curiosity, I was impelled to create this new medium of communication to share my views with the rest of the world.
@@ -155,7 +151,7 @@
 
     <div class="skills section second" id="skills">
         <div class="container">
-            <h1>Technology Articles</h1>
+            <h1>Technology </h1>
              <ul class="article-list list-flat">
                  <li>
                      <a href="technology_article_one.html">Technology Article One Title</a>
@@ -213,7 +209,7 @@
     <script>
         // Typed.js animation (existing script)
 		function newTyped(){}$(function(){$("#typed").typed({
-		strings: ["far northern sky", "your galaxy", "everywhere"],
+		strings: ["hard", "fun", "interesting", "despressing","full of struggle","a journey of wisdom", " and Worth living"],
 		typeSpeed:90,backDelay:700,contentType:"html",loop:!0,resetCallback:function(){newTyped()}}),$(".reset").click(function(){$("#typed").typed("reset")})});
 
         // --- Daily Quote Logic ---
