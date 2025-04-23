@@ -13,10 +13,10 @@
     <link rel="shortcut icon" href="img/favicon.ico" />
     <style>
         /* Existing style */
-        .intro h3:before {
+        /* .intro h3:before { */
             /* Edit this with your name or anything else */
-            content: 'Joy Das';
-        }
+            /* content: 'Joy Das'; */
+        /* } */ /* Removed as per requirement to replace with banner */
 
         /* --- NEW FONT STYLE (NYT-like) --- */
         /* Set the base font for the entire website body to Georgia/Times */
@@ -67,24 +67,42 @@
             line-height: 1.5;
          }
 
+         /* --- The Atlantic-like Banner Style --- */
+         .atlantic-banner {
+             text-align: center;
+             padding: 15px 0; /* Slightly less padding than NYT example */
+             margin-bottom: 30px; /* Space after the banner */
+             border-top: 1px solid #000; /* Optional: Add a line above */
+             border-bottom: 1px solid #000; /* Optional: Add a line below */
+         }
+
+         .atlantic-banner h1 {
+             font-family: 'Georgia', serif; /* Georgia is a good substitute */
+             font-size: 3em; /* Adjust size as needed, slightly smaller than NYT example */
+             font-weight: 700; /* A good bold weight */
+             margin: 0;
+             padding: 0;
+             color: #000;
+             text-transform: uppercase; /* The Atlantic often uses uppercase for their main logo */
+         }
+
+         /* Optional: Add a slightly thicker line below if desired */
+         /* .atlantic-banner { border-bottom: none; } */
+         /* .atlantic-banner h1 { padding-bottom: 10px; border-bottom: 2px solid #000; } */
+
+         /* --- END The Atlantic-like Banner Style --- */
+
 
     </style>
 </head>
 <body>
-    <div class="daily-quote section" style="padding: 30px 0; text-align: center; background-color: #f4f4f4;">
-        <div class="container">
-            <h2>Quote of the Day</h2>
-            <blockquote id="quote-text" style="font-size: 1.4em; margin-bottom: 10px; font-style: italic;">
-                Loading quote...
-            </blockquote>
-            <cite id="quote-author" style="font-size: 1.1em; display: block;">
-                </cite>
-        </div>
+
+    <div class="atlantic-banner">
+        <h1>JOY DAS</h1>
     </div>
 
     <div class="intro section" id="about">
         <div class="container">
-            <p>Hi, I’m Joy Das</p>
             <div class="units-row units-split wrap">
                 <div class="unit-20">
                     <img src="img/Untitled design (3).png" alt="Avatar">
@@ -121,17 +139,17 @@
         <div class="container">
             <h1> Literature </h1>
              <ul class="article-list list-flat">
-                <li>
-                    <a href="LIT Page 1.html">Literature Article One Title</a>
+                 <li>
+                     <a href="LIT Page 1.html">Literature Article One Title</a>
                      <span class="article-date">Publication Date</span>
                      <p class="article-intro">Brief introduction or summary of Literature Article One...</p>
-                </li>
-                <li>
-                    <a href="literature_article_two.html">Literature Article Two Title</a>
+                 </li>
+                 <li>
+                     <a href="literature_article_two.html">Literature Article Two Title</a>
                      <span class="article-date">Publication Date</span>
                      <p class="article-intro">Brief introduction or summary of Literature Article Two...</p>
-                </li>
-                </ul>
+                 </li>
+                 </ul>
              </div>
     </div>
 
@@ -139,18 +157,18 @@
         <div class="container">
             <h1>Technology Articles</h1>
              <ul class="article-list list-flat">
-                <li>
-                    <a href="technology_article_one.html">Technology Article One Title</a>
-                    <span class="article-date">Publication Date</span>
-                     <p class="article-intro">Brief introduction or summary of Technology Article One...</p>
-                </li>
                  <li>
-                    <a href="technology_article_two.html">Technology Article Two Title</a>
-                    <span class="article-date">Publication Date</span>
+                     <a href="technology_article_one.html">Technology Article One Title</a>
+                     <span class="article-date">Publication Date</span>
+                     <p class="article-intro">Brief introduction or summary of Technology Article One...</p>
+                 </li>
+                  <li>
+                     <a href="technology_article_two.html">Technology Article Two Title</a>
+                     <span class="article-date">Publication Date</span>
                      <p class="article-intro">Brief introduction or summary of Technology Article Two...</p>
-                </li>
-                </ul>
-            </div>
+                 </li>
+                 </ul>
+             </div>
     </div>
 
     <div class="quote">
@@ -159,11 +177,23 @@
         </div>
     </div>
 
+    <div class="daily-quote section" style="padding: 30px 0; text-align: center; background-color: #f4f4f4;">
+        <div class="container">
+            <h2>Quote of the Day</h2>
+            <blockquote id="quote-text" style="font-size: 1.4em; margin-bottom: 10px; font-style: italic;">
+                Loading quote...
+            </blockquote>
+            <cite id="quote-author" style="font-size: 1.1em; display: block;">
+                </cite>
+        </div>
+    </div>
+
+
     <footer>
         <div class="container">
             <div class="units-row">
                 <div class="unit-50">
-                	<p> Connect with me here >>>>>>>>>>>>> </p>    </div>
+                	<p> Connect with me here >>>>>>>>>>>>> </p>	</div>
                 <div class="unit-50">
                     <ul class="social list-flat right">
                         <li><a href="mailto:afnizarhilmi@gmail.com"><i class="fa fa-send"></i></a></li>
