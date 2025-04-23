@@ -1,239 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <title> Das </title>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My Article - International</title> <style>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/kube.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/custom.min.css" />
+    <link rel="shortcut icon" href="img/favicon.ico" />
+    <style href="www.joydas.me">
+        /* Existing style */
+        /* .intro h3:before { */
+            /* Edit this with your name or anything else */
+            /* content: 'Joy Das'; */
+        /* } */ /* Removed as per requirement to replace with banner */
+
+        /* --- NEW FONT STYLE (Body Font - often serif for news sites) --- */
         body {
-            margin: 0;
-            background: #f5f5f5;
-            font-family: 'AGaramondPro', "Adobe Garamond Pro", garamond, Times, serif;
-            color: #222; /* Softer than pure black */
-            display: flex;
-            justify-content: center;
-            align-items: flex-start; /* Keep content aligned to the top */
-            padding: 40px 20px; /* Reduced padding slightly */
-            min-height: 100vh;
+            font-family: Georgia, Times, 'Times New Roman', serif;
+            /* Optional: Adjust base font size and line height for better readability */
+            /* font-size: 17px; */
+            /* line-height: 1.6; */
         }
 
-        .page {
-            position: relative;
-            background: white;
-            width: 100%;
-            max-width: 800px; /* Max width of the content area */
-            min-height: 90vh;
-            /* Kept some styles like border, shadow, background for a paper feel */
-            border-right: 1px solid #ccc;
-            border-bottom: 1px solid #ccc;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            border-radius: 10px;
-            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-            display: flex; /* Use flexbox for layout inside the page */
-            flex-direction: column; /* Stack header and content vertically */
+        /* Exclude the daily quote section from the new font */
+        /* Revert quote text and author to a common sans-serif font, or inherit default */
+        .daily-quote blockquote,
+        .daily-quote cite {
+             font-family: Arial, Helvetica, sans-serif; /* Or specify a different font if preferred */
+             /* Ensure other quote styles are kept or reset if needed */
+             font-style: italic; /* Keep the italic style */
+        }
+        /* --- END NEW FONT STYLE --- */
+
+
+        /* Style for article links */
+        .article-list li {
+            margin-bottom: 10px; /* Add some space between list items */
         }
 
-        /* Navigation styles */
-        .page-nav {
-            padding: 20px 30px 10px 30px; /* Padding top, right, bottom, left */
-            border-bottom: 1px solid #ddd; /* A subtle line to separate from content */
-            text-align: center; /* Center the navigation links */
-            margin-bottom: 0; /* No margin bottom here, gap is handled by audio/content padding */
+        .article-list a {
+            text-decoration: none; /* Remove underline from links */
+            color: #333; /* Set link color */
+            font-weight: bold; /* Make link text bold */
         }
 
-        .page-nav a {
-            text-decoration: none;
-            color: #555; /* A softer color for navigation links */
-            font-weight: normal;
-            margin: 0 15px; /* Space between links */
-            font-size: 1em;
-            transition: color 0.3s ease;
+        .article-list a:hover {
+             text-decoration: underline; /* Add underline on hover */
         }
 
-        .page-nav a:hover {
-            color: #000; /* Darken color on hover */
-            text-decoration: underline;
-        }
-        /* END Navigation styles */
-
-        /* Audio section styles (Minimized space) */
-        .article-audio {
-            /* No left/right padding needed as it's inside .content */
-            padding: 0px 0 5px 0; /* Further reduced bottom padding */
-            border-bottom: 1px dashed #ccc;
-            margin-bottom: 8px; /* Further reduced space below the audio section */
-            margin-top: 0px; /* Removed top margin */
+        .article-list .article-date {
+            font-size: 0.9em;
+            color: #777;
+            display: block; /* Make date appear on its own line */
+            margin-top: 2px;
         }
 
-        .article-audio h3 {
-            margin-top: 0;
-            margin-bottom: 3px; /* Reduced space below the heading */
-            font-size: 0.9em; /* Slightly smaller heading */
-            color: #333;
-        }
-
-        .article-audio audio {
-            width: 100%; /* Make audio player fill the width */
-            margin-top: 4px; /* Adjusted gap between heading and player */
-        }
-        /* END Audio section styles */
-
-
-        .content {
-            position: relative;
-            z-index: 2;
-            /* Padding for the main content area */
-            padding: 15px 30px 40px 30px; /* Adjusted top padding */
-            line-height: 1.75;
-            font-size: 1.125rem; /* slightly bigger for easier reading */
-
-            /* Justify text */
-            text-align: justify;
-            flex-grow: 1; /* Allows content to take up available space */
-        }
-
-        /* Ensure paragraphs and list items are also justified */
-        .content p, .content ul, .content ol, .content li {
-             text-align: justify;
-        }
-
-        /* --- ADDED: Reduce margin-bottom for the paragraph before the audio section --- */
-        /* Reduced margin-top of audio section to reduce the gap above it */
-        .content p + .article-audio {
-             margin-top: 0.4rem; /* Reduced from 0.75rem */
-        }
-        /* --- END ADDED --- */
-
-
-        .content h1 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            text-align: left; /* Headings usually look better left-aligned */
-        }
-
-        .content h2 {
-            font-size: 1.75rem;
-            font-weight: bold;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            text-align: left; /* Headings usually look better left-aligned */
-        }
-
-        .content h3 {
-            font-size: 1.4rem;
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
-            text-align: left; /* Headings usually look better left-aligned */
-        }
-
-        .content p, .content ul, .content ol {
-            margin-top: 0;
-            margin-bottom: 1.5rem; /* Default paragraph bottom margin */
-        }
-
-        .content ul, .content ol {
-            padding-left: 1.5rem;
-        }
-
-        .content em {
+         .article-list .article-intro {
+            font-size: 0.95em;
             color: #555;
-        }
-
-        /* Optional: Style for links */
-        .content a {
-            color: #0056b3;
-            text-decoration: none;
-        }
-
-        .content a:hover {
-            text-decoration: underline;
-        }
-
-         /* Responsive adjustments for smaller screens */
-         @media (max-width: 600px) {
-             body {
-                 padding: 20px 10px;
-             }
-             .page-nav {
-                 padding: 15px 15px 8px 15px;
-                 margin-bottom: 0;
-             }
-             .page-nav a {
-                 margin: 0 8px;
-                 font-size: 0.9em;
-             }
-             .article-audio {
-                 padding: 0px 0 5px 0; /* Minimized padding */
-                 margin-bottom: 6px; /* Reduced margin */
-                 margin-top: 0px;
-             }
-             .article-audio h3 {
-                 font-size: 0.85em; /* Slightly smaller heading */
-                 margin-bottom: 2px;
-             }
-             .article-audio audio {
-                margin-top: 3px; /* Adjusted margin */
-             }
-              /* --- ADDED: Reduce margin-top for audio on small screens --- */
-              .content p + .article-audio {
-                  margin-top: 0.3rem; /* Adjusted for smaller screens */
-              }
-              /* --- END ADDED --- */
-             .content {
-                 padding: 10px 15px 30px 15px;
-             }
-              .content h1 { font-size: 2rem; }
-              .content h2 { font-size: 1.5rem; }
-              .content h3 { font-size: 1.2rem; }
-              .content { font-size: 1rem; }
+            margin-top: 5px;
+            line-height: 1.5;
          }
+
+         /* --- Refined The Atlantic-like Banner Style --- */
+         .atlantic-banner {
+              text-align: center;
+              padding: 10px 0; /* Slightly reduced padding */
+              margin-bottom: 15px; /* Reduced space after the banner */
+              border-top: 1px solid #000;
+              border-bottom: 1px solid #000;
+         }
+
+         .atlantic-banner h1 {
+              font-family: "Times New Roman", Times, serif;
+              font-size: 2.8em;
+              font-weight: normal;
+              margin: 0;
+              padding: 0;
+              color: #000;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+         }
+         /* --- END Refined The Atlantic-like Banner Style --- */
+
+         /* --- Adjustment for Intro Section Padding --- */
+         /* The .intro.section likely has padding from kube.min.css or custom.min.css */
+         /* We'll add a rule specifically for the top padding */
+         .intro.section {
+             padding-top: 20px; /* Reduced top padding */
+         }
+         /* --- END Adjustment --- */
+
 
     </style>
 </head>
 <body>
 
-<div class="page">
-    <div class="page-nav">
-        <a href="index.html">Home</a>
-        <a href="index.html#skills">Technology</a>
-        <a href="index.html#achievements">Literature</a>
+    <div class="atlantic-banner">
+        <h1 href="www.joydas.me">JOY DAS</h1>
     </div>
 
-    <div class="content">
-        <h1>Article Title Goes Here</h1>
-
-        <p><em>Write a short introduction paragraph here. Introduce the topic in a few lines, explaining what the article will cover.</em></p>
-
-        <div class="article-audio">
-            <h3>Listen to this article</h3>
-            <audio controls>
-                <source src="path/to/your/ai-generated-audio.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
+    <div class="intro section" id="about">
+        <div class="container">
+            <div class="units-row units-split wrap">
+                <div class="unit-20">
+                    <img src="img/Untitled design (3).png" alt="Avatar">
+                </div>
+                <div class="unit-80">
+                    <h1> Life is <br><span id="typed"></span></h1>
+                </div>
+                <p>
+                    Not of passion but out of sheer interest and curiosity, I was impelled to create this new medium of communication to share my views with the rest of the world.
+                </p>
+            </div>
         </div>
-
-        <h2>Section 1: Introduction to the Topic</h2>
-        <p>The English Romantic period, a transformative era in literary and cultural history, is generally considered to span from the late eighteenth century to the mid-nineteenth century. While precise dating remains debated among scholars, common starting points range from the 1780s to the publication of William Wordsworth and Samuel Taylor Coleridge's Lyrical Ballads in 1798, with endpoints often cited around the Reform Act of 1832, the accession of Queen Victoria in 1837, or even mid-century. For the purposes of English literature, the core period is frequently delineated as approximately 1785 to 1832, a half-century marked by profound artistic innovation and enduring consequence.</p>
-
-        <h2>Section 2: Main Discussion</h2>
-        <p>Start breaking down your main points here. Use paragraphs to organize different ideas. Make sure each paragraph flows logically into the next.</p>
-
-        <h3>Subheading: A Specific Detail</h3>
-        <p>Expand deeper into a particular point. Subheadings help guide the reader and make long articles easier to scan and understand. Justified text can sometimes create larger gaps between words, especially with short lines. If this becomes an issue on mobile, you might consider keeping left alignment or using hyphenation.</p>
-
-        <h2>Section 3: Key Takeaways</h2>
-        <ul>
-            <li>Summarize the major points discussed.</li>
-            <li>Highlight any tips, lessons, or recommendations.</li>
-            <li>Keep the list short and clear.</li>
-        </ul>
-
-        <h2>Conclusion</h2>
-        <p>Wrap up your article with a conclusion paragraph. Reflect back on what was discussed, offer final thoughts, or encourage the reader to take action.</p>
-
     </div>
-</div>
 
+    <div class="work section second" id="experiences">
+        <div class="container">
+            <h1> International</h1>
+            <ul class="article-list list-flat">
+                 <li>
+                    <a href="INT page 1.html">Article One Title Here</a>
+                    <span class="article-date">Publication Date (e.g., April 22, 2025)</span>
+                    <p class="article-intro">Brief introduction or summary of International Article One...</p>
+                 </li>
+                 <li>
+                    <a href="INT page 2.html">Article Two Title Here</a>
+                    <span class="article-date">Publication Date (e.g., April 23, 2025)</span>
+                    <p class="article-intro">Brief introduction or summary of International Article Two...</p>
+                 </li>
+                </ul>
+            </div>
+    </div>
+
+    <div class="award section second" id="achievements">
+        <div class="container">
+            <h1> Literature </h1>
+             <ul class="article-list list-flat">
+                 <li>
+                     <a href="LIT Page 1.html">Literature Article One Title</a>
+                     <span class="article-date">Publication Date</span>
+                     <p class="article-intro">Brief introduction or summary of Literature Article One...</p>
+                 </li>
+                 <li>
+                     <a href="literature_article_two.html">Literature Article Two Title</a>
+                     <span class="article-date">Publication Date</span>
+                     <p class="article-intro">Brief introduction or summary of Literature Article Two...</p>
+                 </li>
+                 </ul>
+             </div>
+    </div>
+
+    <div class="skills section second" id="skills">
+        <div class="container">
+            <h1>Technology </h1>
+             <ul class="article-list list-flat">
+                 <li>
+                     <a href="technology_article_one.html">Technology Article One Title</a>
+                     <span class="article-date">Publication Date</span>
+                     <p class="article-intro">Brief introduction or summary of Technology Article One...</p>
+                 </li>
+                  <li>
+                     <a href="technology_article_two.html">Technology Article Two Title</a>
+                     <span class="article-date">Publication Date</span>
+                     <p class="article-intro">Brief introduction or summary of Technology Article Two...</p>
+                 </li>
+                 </ul>
+             </div>
+    </div>
+
+    <div class="quote">
+        <div class="container text-centered">
+            <h1>fight against the ugliness.</h1>
+        </div>
+    </div>
+
+    <div class="daily-quote section" style="padding: 30px 0; text-align: center; background-color: #f4f4f4;">
+        <div class="container">
+            <h2>Quote of the Day</h2>
+            <blockquote id="quote-text" style="font-size: 1.4em; margin-bottom: 10px; font-style: italic;">
+                Loading quote...
+            </blockquote>
+            <cite id="quote-author" style="font-size: 1.1em; display: block;">
+                </cite>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="container">
+            <div class="units-row">
+                <div class="unit-50">
+                	<p> Connect with me here >>>>>>>>>>>>> </p>	</div>
+                <div class="unit-50">
+                    <ul class="social list-flat right">
+                        <li><a href="joydasofficial99@gmail.com"><i class="fa fa-send"></i></a></li>
+                        <li><a href="http://twitter.com/flamekaizar"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="http://dribbble.com/flamekaizar"><i class="fa fa-dribbble"></i></a></li>
+                        <li><a href="http://behance.com/flamekaizar"><i class="fa fa-behance"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/typed.min.js"></script>
+    <script src="js/kube.min.js"></script>
+    <script src="js/site.js"></script>
+    <script>
+        // Typed.js animation (existing script)
+		function newTyped(){}$(function(){$("#typed").typed({
+		strings: ["hard", "fun", "interesting", "depressing","full of struggle","a journey of wisdom", " Worth living"],
+		typeSpeed:90,backDelay:700,contentType:"html",loop:!0,resetCallback:function(){newTyped()}}),$(".reset").click(function(){$("#typed").typed("reset")})});
+
+        // --- Daily Quote Logic ---
+        document.addEventListener('DOMContentLoaded', function() {
+            // ---!!! IMPORTANT: Add your 365 quotes here !!!---
+            // This is a small sample list. You need to expand this list significantly.
+            // Each quote is an object with 'text' and 'author' properties.
+            const quotes = [
+                { text: "The only true wisdom is in knowing you know nothing.", author: "Socrates" },
+                { text: "The unexamined life is not worth living.", author: "Socrates" },
+                { text: "An investment in knowledge pays the best interest.", author: "Benjamin Franklin" },
+                { text: "The only thing we have to fear is fear itself.", author: "Franklin D. Roosevelt" },
+                { text: "Strive not to be a success, but rather to be of value.", author: "Albert Einstein" },
+                { text: "Imagination is more important than knowledge.", author: "Albert Einstein" },
+                { text: "The mind is everything. What you think you become.", author: "Buddha" },
+                { text: "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.", author: "Ralph Waldo Emerson" },
+                { text: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius" },
+                { text: "Our greatest glory is not in never failing, but in rising up every time we fail.", author: "Confucius" },
+                { text: "Knowing yourself is the beginning of all wisdom.", author: "Aristotle" },
+                { text: "Educating the mind without educating the heart is no education at all.", author: "Aristotle" },
+                { text: "The journey of a thousand miles begins with a single step.", author: "Lao Tzu" },
+                { text: "That which does not kill us makes us stronger.", author: "Friedrich Nietzsche" },
+                { text: "Happiness depends upon ourselves.", author: "Aristotle" },
+                // Add many more quotes here to reach 365...
+                // Example: { text: "Quote text here.", author: "Author Name" },
+            ];
+
+            // Get current date
+            const today = new Date();
+
+            // Calculate the day of the year (1-366)
+            const startOfYear = new Date(today.getFullYear(), 0, 0);
+            const diff = today - startOfYear;
+            const oneDay = 1000 * 60 * 60 * 24;
+            const dayOfYear = Math.floor(diff / oneDay); // This gives day number 1 to 366
+
+            // Select quote based on the day of the year
+            // The modulo operator (%) ensures we loop back to the beginning if dayOfYear > number of quotes
+            const quoteIndex = (dayOfYear - 1) % quotes.length; // Adjust index to be 0-based
+            const selectedQuote = quotes[quoteIndex];
+
+            // Update the HTML elements
+            const quoteTextElement = document.getElementById('quote-text');
+            const quoteAuthorElement = document.getElementById('quote-author');
+
+            if (quoteTextElement && quoteAuthorElement && selectedQuote) {
+                quoteTextElement.textContent = `"${selectedQuote.text}"`;
+                quoteAuthorElement.textContent = `- ${selectedQuote.author}`;
+            } else {
+                // Fallback if elements or quote not found
+                if (quoteTextElement) quoteTextElement.textContent = "Could not load quote.";
+                console.error("Could not find quote elements or selected quote.");
+            }
+        });
+    </script>
 </body>
 </html>
