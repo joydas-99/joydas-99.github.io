@@ -33,12 +33,12 @@
             flex-direction: column; /* Stack header and content vertically */
         }
 
-        /* --- ADDED: Navigation styles --- */
+        /* Navigation styles */
         .page-nav {
             padding: 20px 30px 10px 30px; /* Padding top, right, bottom, left */
             border-bottom: 1px solid #ddd; /* A subtle line to separate from content */
             text-align: center; /* Center the navigation links */
-            margin-bottom: 20px; /* Space below the nav */
+            margin-bottom: 0; /* No margin bottom here, gap is handled by audio/content padding */
         }
 
         .page-nav a {
@@ -54,23 +54,44 @@
             color: #000; /* Darken color on hover */
             text-decoration: underline;
         }
-        /* --- END ADDED: Navigation styles --- */
+        /* END Navigation styles */
+
+        /* Audio section styles (Adjusted padding/margins slightly) */
+        .article-audio {
+            /* No left/right padding needed as it's inside .content */
+            padding: 10px 0 20px 0; /* Padding top, right, bottom, left */
+            border-bottom: 1px dashed #ccc; /* A dashed line for separation */
+            margin-bottom: 20px; /* Space below the audio section */
+            margin-top: 10px; /* Add some space above */
+        }
+
+        .article-audio h3 {
+            margin-top: 0;
+            margin-bottom: 10px; /* Space below the heading */
+            font-size: 1.1em; /* Slightly smaller heading inside content */
+            color: #333;
+        }
+
+        .article-audio audio {
+            width: 100%; /* Make audio player fill the width */
+        }
+        /* END Audio section styles */
 
 
         .content {
             position: relative;
             z-index: 2;
-            /* Adjusted padding - matches right/left of page-nav, adds bottom padding */
-            padding: 0 30px 40px 30px;
+            /* Padding for the main content area */
+            padding: 20px 30px 40px 30px; /* Added back top padding */
             line-height: 1.75;
             font-size: 1.125rem; /* slightly bigger for easier reading */
 
-            /* --- ADDED: Justify text --- */
+            /* Justify text */
             text-align: justify;
             flex-grow: 1; /* Allows content to take up available space */
         }
 
-        /* --- ADDED: Ensure paragraphs and list items are also justified --- */
+        /* Ensure paragraphs and list items are also justified */
         .content p, .content ul, .content ol, .content li {
              text-align: justify;
         }
@@ -121,27 +142,34 @@
             text-decoration: underline;
         }
 
-         /* --- ADDED: Responsive adjustments for smaller screens --- */
+         /* Responsive adjustments for smaller screens */
          @media (max-width: 600px) {
              body {
-                 padding: 20px 10px; /* Further reduce body padding on smaller screens */
+                 padding: 20px 10px;
              }
              .page-nav {
-                 padding: 15px 15px 8px 15px; /* Adjust nav padding */
-                 margin-bottom: 15px;
+                 padding: 15px 15px 8px 15px;
+                 margin-bottom: 0;
              }
              .page-nav a {
-                 margin: 0 8px; /* Reduce space between links */
+                 margin: 0 8px;
                  font-size: 0.9em;
              }
+             .article-audio {
+                 padding: 10px 0 15px 0; /* Adjust audio section padding */
+                 margin-bottom: 15px;
+                 margin-top: 8px; /* Adjust top margin */
+             }
+             .article-audio h3 {
+                 font-size: 1em; /* Further smaller heading */
+             }
              .content {
-                 /* Even narrower padding on very small screens */
-                 padding: 0 15px 30px 15px; /* Adjusted padding for smaller viewports */
+                 padding: 15px 15px 30px 15px; /* Adjusted padding */
              }
               .content h1 { font-size: 2rem; }
               .content h2 { font-size: 1.5rem; }
               .content h3 { font-size: 1.2rem; }
-              .content { font-size: 1rem; } /* Slightly smaller base font size */
+              .content { font-size: 1rem; }
          }
 
     </style>
@@ -159,6 +187,14 @@
         <h1>Article Title Goes Here</h1>
 
         <p><em>Write a short introduction paragraph here. Introduce the topic in a few lines, explaining what the article will cover.</em></p>
+
+        <div class="article-audio">
+            <h3>Listen to this article</h3>
+            <audio controls>
+                <source src="path/to/your/ai-generated-audio.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
 
         <h2>Section 1: Introduction to the Topic</h2>
         <p>The English Romantic period, a transformative era in literary and cultural history, is generally considered to span from the late eighteenth century to the mid-nineteenth century. While precise dating remains debated among scholars, common starting points range from the 1780s to the publication of William Wordsworth and Samuel Taylor Coleridge's Lyrical Ballads in 1798, with endpoints often cited around the Reform Act of 1832, the accession of Queen Victoria in 1837, or even mid-century. For the purposes of English literature, the core period is frequently delineated as approximately 1785 to 1832, a half-century marked by profound artistic innovation and enduring consequence.</p>
