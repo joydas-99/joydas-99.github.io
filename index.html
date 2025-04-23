@@ -66,22 +66,22 @@
 
          /* --- Refined The Atlantic-like Banner Style --- */
          .atlantic-banner {
-              text-align: center;
-              padding: 10px 0; /* Slightly reduced padding */
-              margin-bottom: 15px; /* Reduced space after the banner */
-              border-top: 1px solid #000;
-              border-bottom: 1px solid #000;
+               text-align: center;
+               padding: 10px 0; /* Slightly reduced padding */
+               margin-bottom: 15px; /* Reduced space after the banner */
+               border-top: 1px solid #000;
+               border-bottom: 1px solid #000;
          }
 
          .atlantic-banner h1 {
-              font-family: "Times New Roman", Times, serif;
-              font-size: 2.8em;
-              font-weight: normal;
-              margin: 0;
-              padding: 0;
-              color: #000;
-              text-transform: uppercase;
-              letter-spacing: 0.5px;
+               font-family: "Times New Roman", Times, serif;
+               font-size: 2.8em;
+               font-weight: normal;
+               margin: 0;
+               padding: 0;
+               color: #000;
+               text-transform: uppercase;
+               letter-spacing: 0.5px;
          }
          /* --- END Refined The Atlantic-like Banner Style --- */
 
@@ -93,6 +93,17 @@
          }
          /* --- END Adjustment --- */
 
+         /* --- Guardian-style Selection Highlight --- */
+         ::selection {
+             background-color: #fff1a8; /* A Guardian-like yellow */
+             color: #000000; /* Black text color for contrast */
+         }
+
+         ::-moz-selection { /* Firefox */
+             background-color: #fff1a8;
+             color: #000000;
+         }
+         /* --- END Guardian-style Selection Highlight --- */
 
     </style>
 </head>
@@ -132,8 +143,8 @@
                     <span class="article-date">Publication Date (e.g., April 23, 2025)</span>
                     <p class="article-intro">Brief introduction or summary of International Article Two...</p>
                  </li>
-                </ul>
-            </div>
+             </ul>
+        </div>
     </div>
 
     <div class="award section second" id="achievements">
@@ -141,14 +152,14 @@
             <h1> Literature </h1>
              <ul class="article-list list-flat">
                  <li>
-                     <a href="LIT Page 1.html">Literature Article One Title</a>
-                     <span class="article-date">Publication Date</span>
-                     <p class="article-intro">Brief introduction or summary of Literature Article One...</p>
+                      <a href="LIT Page 1.html">Literature Article One Title</a>
+                      <span class="article-date">Publication Date</span>
+                      <p class="article-intro">Brief introduction or summary of Literature Article One...</p>
                  </li>
                  <li>
-                     <a href="LIT Page 2.html">Literature Article Two Title</a>
-                     <span class="article-date">Publication Date</span>
-                     <p class="article-intro">Brief introduction or summary of Literature Article Two...</p>
+                      <a href="LIT Page 2.html">Literature Article Two Title</a>
+                      <span class="article-date">Publication Date</span>
+                      <p class="article-intro">Brief introduction or summary of Literature Article Two...</p>
                  </li>
                  </ul>
              </div>
@@ -159,14 +170,14 @@
             <h1>Technology </h1>
              <ul class="article-list list-flat">
                  <li>
-                     <a href="Tech page 1.html">Technology Article One Title</a>
-                     <span class="article-date">Publication Date</span>
-                     <p class="article-intro">Brief introduction or summary of Technology Article One...</p>
+                      <a href="Tech page 1.html">Technology Article One Title</a>
+                      <span class="article-date">Publication Date</span>
+                      <p class="article-intro">Brief introduction or summary of Technology Article One...</p>
                  </li>
                   <li>
-                     <a href="technology_article_two.html">Technology Article Two Title</a>
-                     <span class="article-date">Publication Date</span>
-                     <p class="article-intro">Brief introduction or summary of Technology Article Two...</p>
+                      <a href="technology_article_two.html">Technology Article Two Title</a>
+                      <span class="article-date">Publication Date</span>
+                      <p class="article-intro">Brief introduction or summary of Technology Article Two...</p>
                  </li>
                  </ul>
              </div>
@@ -194,7 +205,7 @@
         <div class="container">
             <div class="units-row">
                 <div class="unit-50">
-                	<p> Connect with me here >>>>>>>>>>>>> </p>	</div>
+                 <p> Connect with me here >>>>>>>>>>>>> </p>	</div>
                 <div class="unit-50">
                     <ul class="social list-flat right">
                         <li><a href="joydasofficial99@gmail.com"><i class="fa fa-send"></i></a></li>
@@ -261,12 +272,12 @@
             const quoteAuthorElement = document.getElementById('quote-author');
 
             if (quoteTextElement && quoteAuthorElement && selectedQuote) {
-                quoteTextElement.textContent = `"${selectedQuote.text}"`;
-                quoteAuthorElement.textContent = `- ${selectedQuote.author}`;
+                 quoteTextElement.textContent = `"${selectedQuote.text}"`;
+                 quoteAuthorElement.textContent = `- ${selectedQuote.author}`;
             } else {
-                // Fallback if elements or quote not found
-                if (quoteTextElement) quoteTextElement.textContent = "Could not load quote.";
-                console.error("Could not find quote elements or selected quote.");
+                 // Fallback if elements or quote not found
+                 if (quoteTextElement) quoteTextElement.textContent = "Could not load quote.";
+                 console.error("Could not find quote elements or selected quote.");
             }
         });
     </script>
