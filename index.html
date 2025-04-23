@@ -93,6 +93,18 @@
          }
          /* --- END Adjustment --- */
 
+         /* --- ADDED: Section Separator Style (using image) --- */
+         .section-separator {
+             width: 100%; /* Allow the div to take full width for centering */
+             height: 50px; /* **Adjust this to the actual height of your separator.png image** */
+             margin: 40px auto; /* Center horizontally, add space above and below */
+             background-image: url('img/separator.png'); /* **Update the path to your image** */
+             background-repeat: no-repeat;
+             background-position: center; /* Center the image within the div */
+             background-size: contain; /* Adjusts image size to fit within the div while maintaining aspect ratio. Use 'auto' or specific dimensions if needed. */
+         }
+         /* --- END ADDED --- */
+
 
     </style>
 </head>
@@ -118,6 +130,8 @@
         </div>
     </div>
 
+    <div class="section-separator"></div>
+
     <div class="work section second" id="experiences">
         <div class="container">
             <h1> International</h1>
@@ -136,12 +150,14 @@
             </div>
     </div>
 
+    <div class="section-separator"></div>
+
     <div class="award section second" id="achievements">
         <div class="container">
             <h1> Literature </h1>
              <ul class="article-list list-flat">
                  <li>
-                     <a href="LIT Page 1.html">Literature Article One Title</a>
+                     <a href="LIT page 1.html">Literature Article One Title</a>
                      <span class="article-date">Publication Date</span>
                      <p class="article-intro">Brief introduction or summary of Literature Article One...</p>
                  </li>
@@ -154,23 +170,27 @@
              </div>
     </div>
 
+    <div class="section-separator"></div>
+
     <div class="skills section second" id="skills">
         <div class="container">
             <h1>Technology </h1>
-             <ul class="article-list list-flat">
-                 <li>
-                     <a href="technology_article_one.html">Technology Article One Title</a>
-                     <span class="article-date">Publication Date</span>
-                     <p class="article-intro">Brief introduction or summary of Technology Article One...</p>
-                 </li>
-                  <li>
-                     <a href="technology_article_two.html">Technology Article Two Title</a>
-                     <span class="article-date">Publication Date</span>
-                     <p class="article-intro">Brief introduction or summary of Technology Article Two...</p>
-                 </li>
-                 </ul>
-             </div>
+            <ul class="article-list list-flat">
+                <li>
+                    <a href="technology_article_one.html">Technology Article One Title</a>
+                    <span class="article-date">Publication Date</span>
+                    <p class="article-intro">Brief introduction or summary of Technology Article One...</p>
+                </li>
+                <li>
+                    <a href="technology_article_two.html">Technology Article Two Title</a>
+                    <span class="article-date">Publication Date</span>
+                    <p class="article-intro">Brief introduction or summary of Technology Article Two...</p>
+                </li>
+            </ul>
+        </div>
     </div>
+
+     <div class="section-separator"></div>
 
     <div class="quote">
         <div class="container text-centered">
