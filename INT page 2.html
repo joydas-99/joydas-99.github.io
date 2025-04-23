@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My Article - International</title> <style>
+    <title>My Article - International</title>
+    <style>
         body {
             margin: 0;
             background: #f5f5f5;
@@ -14,144 +15,284 @@
             align-items: flex-start; /* Keep content aligned to the top */
             padding: 40px 20px; /* Reduced padding slightly */
             min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        /* Progress Bar Styles */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 5px;
+            background-color: #4CAF50;
+            z-index: 1000;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Focus Mode Toggle Button Styles */
+        #focus-mode-toggle {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 10;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 0.8em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+            font-family: inherit;
+            opacity: 0; /* Start hidden */
+            pointer-events: none; /* Cannot click when hidden */
+        }
+
+        #focus-mode-toggle:hover {
+             background-color: rgba(240, 240, 240, 0.9);
+             border-color: #bbb;
+        }
+        #focus-mode-toggle:active {
+             background-color: rgba(220, 220, 220, 0.9);
+        }
+
+        /* Make button slightly more visible when scrolled down */
+        body.scrolled #focus-mode-toggle {
+            opacity: 1;
+            pointer-events: auto;
         }
 
         .page {
             position: relative;
             background: white;
             width: 100%;
-            max-width: 800px; /* Max width of the content area */
+            max-width: 800px;
             min-height: 90vh;
-            /* Kept some styles like border, shadow, background for a paper feel */
             border-right: 1px solid #ccc;
             border-bottom: 1px solid #ccc;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             overflow: hidden;
             border-radius: 10px;
             background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-            display: flex; /* Use flexbox for layout inside the page */
-            flex-direction: column; /* Stack header and content vertically */
+            display: flex;
+            flex-direction: column;
         }
 
         /* Navigation styles */
         .page-nav {
-            padding: 20px 30px 10px 30px; /* Padding top, right, bottom, left */
-            border-bottom: 1px solid #ddd; /* A subtle line to separate from content */
-            text-align: center; /* Center the navigation links */
-            margin-bottom: 0; /* No margin bottom here, gap is handled by audio/content padding */
+            padding: 20px 30px 10px 30px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+            margin-bottom: 0;
         }
 
         .page-nav a {
             text-decoration: none;
-            color: #555; /* A softer color for navigation links */
+            color: #555;
             font-weight: normal;
-            margin: 0 15px; /* Space between links */
+            margin: 0 15px;
             font-size: 1em;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, text-decoration 0.3s ease;
         }
 
         .page-nav a:hover {
-            color: #000; /* Darken color on hover */
+            color: #000;
             text-decoration: underline;
         }
-        /* END Navigation styles */
 
-        /* Audio section styles (Minimized space) */
+        /* Audio section styles */
         .article-audio {
-            /* No left/right padding needed as it's inside .content */
-            padding: 0px 0 8px 0; /* Further reduced top/bottom padding */
+            padding: 0px 0 8px 0;
             border-bottom: 1px dashed #ccc;
-            margin-bottom: 10px; /* Further reduced space below the audio section */
-            margin-top: 0px; /* Removed top margin */
+            margin-bottom: 15px;
+            margin-top: 0px;
         }
 
         .article-audio h3 {
             margin-top: 0;
-            margin-bottom: 3px; /* Reduced space below the heading */
-            font-size: 0.95em; /* Slightly smaller heading */
+            margin-bottom: 3px;
+            font-size: 0.95em;
             color: #333;
         }
 
         .article-audio audio {
-            width: 100%; /* Make audio player fill the width */
-            margin-top: 5px; /* Add a small gap between heading and player */
+            width: 100%;
+            margin-top: 5px;
         }
-        /* END Audio section styles */
-
 
         .content {
             position: relative;
             z-index: 2;
-            /* Padding for the main content area */
-            padding: 15px 30px 40px 30px; /* Adjusted top padding */
+            padding: 15px 30px 40px 30px;
             line-height: 1.75;
-            font-size: 1.125rem; /* slightly bigger for easier reading */
-
-            /* Justify text */
+            font-size: 1.125rem;
             text-align: justify;
-            flex-grow: 1; /* Allows content to take up available space */
+            flex-grow: 1;
         }
 
-        /* Ensure paragraphs and list items are also justified */
+        /* Ensure paragraphs and list items are justified */
         .content p, .content ul, .content ol, .content li {
              text-align: justify;
+             margin-bottom: 1.5rem;
+             margin-top: 0;
         }
 
-        /* --- ADDED: Reduce margin-bottom for the paragraph before the audio section --- */
-        .content p + .article-audio {
-             margin-top: 0.75rem; /* Set the top margin of the audio section to half the paragraph's default bottom margin */
-             /* You might need to adjust the margin-bottom of the preceding paragraph as well */
-             /* For example: .content p:has(+ .article-audio) { margin-bottom: 0.75rem; } */
-             /* Or more simply, adjust the margin-top of the audio section */
-             margin-top: 0.75rem; /* Using margin-top on the audio section to control the gap */
+         .content ul, .content ol {
+             padding-left: 1.5rem;
+         }
+
+        /* Article Meta Styles */
+        .article-meta {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 0.5rem;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
         }
-        /* --- END ADDED --- */
+
+         .article-meta span {
+             flex-shrink: 0;
+         }
+
+        /* Reading Time Style */
+         .reading-time {
+             font-size: 0.9em;
+             color: #666;
+             text-align: right;
+             white-space: nowrap;
+         }
 
 
         .content h1 {
             font-size: 2.5rem;
             font-weight: bold;
-            margin-bottom: 1rem;
-            text-align: left; /* Headings usually look better left-aligned */
+            margin-bottom: 0.5rem;
+            text-align: left;
         }
 
         .content h2 {
             font-size: 1.75rem;
             font-weight: bold;
-            margin-top: 2rem;
+            margin-top: 2.2rem;
             margin-bottom: 1rem;
-            text-align: left; /* Headings usually look better left-aligned */
+            text-align: left;
+            color: #333;
         }
 
         .content h3 {
             font-size: 1.4rem;
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
-            text-align: left; /* Headings usually look better left-aligned */
-        }
-
-        .content p, .content ul, .content ol {
-            margin-top: 0;
-            margin-bottom: 1.5rem; /* Default paragraph bottom margin */
-        }
-
-        .content ul, .content ol {
-            padding-left: 1.5rem;
+            font-weight: bold;
+            margin-top: 1.8rem;
+            margin-bottom: 0.8rem;
+            text-align: left;
+            color: #444;
         }
 
         .content em {
             color: #555;
         }
 
-        /* Optional: Style for links */
+        /* Link Styles */
         .content a {
             color: #0056b3;
-            text-decoration: none;
+            text-decoration: underline;
+            text-decoration-color: rgba(0, 86, 179, 0.5);
+            transition: text-decoration-color 0.3s ease, color 0.3s ease;
         }
 
         .content a:hover {
-            text-decoration: underline;
+            color: #003f8f;
+            text-decoration-color: #0056b3;
         }
+
+        /* HR Style */
+        .content hr {
+            border: none;
+            height: 1px;
+            background-color: #ddd;
+            margin: 3rem auto;
+            width: 50%;
+        }
+
+         /* Blockquote Style */
+         .content blockquote {
+             margin: 2rem 0;
+             padding: 1rem 1.5rem;
+             border-left: 4px solid #ccc;
+             font-style: italic;
+             color: #555;
+             background-color: #f9f9f9;
+         }
+
+         .content blockquote p {
+              margin-bottom: 0.5rem;
+              text-align: left;
+         }
+
+         .content blockquote p:last-child {
+             margin-bottom: 0;
+         }
+
+         /* Footer Styles */
+         .page-footer {
+             padding: 20px 30px;
+             border-top: 1px solid #ddd;
+             text-align: center;
+             font-size: 0.9em;
+             color: #666;
+             margin-top: auto;
+         }
+
+         .page-footer a {
+             color: #666;
+             text-decoration: none;
+             margin: 0 5px;
+             transition: color 0.3s ease;
+         }
+
+         .page-footer a:hover {
+             color: #222;
+             text-decoration: underline;
+         }
+
+        /* Focus Mode Styles */
+        body.focus-mode-active .content > *:not(.active-block) {
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+        }
+
+        body.focus-mode-active .content .active-block {
+            opacity: 1;
+        }
+
+        body.focus-mode-active .content .active-block * {
+            opacity: 1 !important;
+        }
+
+        /* Dynamic Drop Cap Style */
+        .drop-cap {
+            float: left;
+            font-size: 4em;
+            line-height: 0.8;
+            margin-right: 0.05em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Ensure drop cap styles don't break on very small screens if desired */
+        @media (max-width: 400px) {
+            .drop-cap {
+                float: none;
+                font-size: 2em;
+                line-height: 1;
+                margin-right: 0;
+                display: inline;
+            }
+        }
+
 
          /* Responsive adjustments for smaller screens */
          @media (max-width: 600px) {
@@ -168,7 +309,7 @@
              }
              .article-audio {
                  padding: 0px 0 8px 0;
-                 margin-bottom: 8px;
+                 margin-bottom: 12px;
                  margin-top: 0px;
              }
              .article-audio h3 {
@@ -178,23 +319,51 @@
              .article-audio audio {
                 margin-top: 4px;
              }
-              /* --- ADDED: Reduce margin-bottom for the paragraph before audio on small screens --- */
-              .content p + .article-audio {
-                  margin-top: 0.5rem; /* Adjust for smaller screens if needed */
-              }
-              /* --- END ADDED --- */
+
              .content {
                  padding: 10px 15px 30px 15px;
              }
-              .content h1 { font-size: 2rem; }
-              .content h2 { font-size: 1.5rem; }
-              .content h3 { font-size: 1.2rem; }
+             .article-meta {
+                margin-bottom: 1rem;
+                 flex-direction: column; /* Stack meta and reading time */
+                 align-items: flex-start; /* Align stack to the left */
+             }
+             .reading-time {
+                 text-align: left; /* Align left when stacked */
+                 margin-top: 5px; /* Add space above */
+             }
+
+              .content h1 { font-size: 2rem; margin-bottom: 0.4rem; }
+              .content h2 { font-size: 1.5rem; margin-top: 1.8rem; margin-bottom: 0.8rem; }
+              .content h3 { font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.7rem; }
               .content { font-size: 1rem; }
+              .content p, .content ul, .content ol, .content li { margin-bottom: 1.2rem; }
+
+              /* Blockquote Mobile Adjustments */
+              .content blockquote {
+                 margin: 1.5rem 0;
+                 padding: 0.8rem 1rem;
+              }
+
+              /* Footer Mobile Adjustments */
+              .page-footer {
+                 padding: 15px 15px;
+              }
+
+              /* Focus Mode Toggle Button Mobile */
+              #focus-mode-toggle {
+                  top: 10px;
+                  right: 10px;
+                  padding: 3px 8px;
+                  font-size: 0.7em;
+              }
          }
 
     </style>
 </head>
 <body>
+
+    <div id="progress-bar"></div>
 
 <div class="page">
     <div class="page-nav">
@@ -203,8 +372,17 @@
         <a href="index.html#achievements">Literature</a>
     </div>
 
+    <button id="focus-mode-toggle" title="Toggle Focus Mode">Focus Mode</button>
+
     <div class="content">
         <h1>Article Title Goes Here</h1>
+
+        <div class="article-meta">
+            <span>By [Your Name]</span>
+            <span>On [Date of Publication]</span>
+            <span class="reading-time"></span>
+        </div>
+
 
         <p><em>Write a short introduction paragraph here. Introduce the topic in a few lines, explaining what the article will cover.</em></p>
 
@@ -215,15 +393,24 @@
                 Your browser does not support the audio element.
             </audio>
         </div>
-
-        <h2>Section 1: Introduction to the Topic</h2>
-        <p>The English Romantic period, a transformative era in literary and cultural history, is generally considered to span from the late eighteenth century to the mid-nineteenth century. While precise dating remains debated among scholars, common starting points range from the 1780s to the publication of William Wordsworth and Samuel Taylor Coleridge's Lyrical Ballads in 1798, with endpoints often cited around the Reform Act of 1832, the accession of Queen Victoria in 1837, or even mid-century. For the purposes of English literature, the core period is frequently delineated as approximately 1785 to 1832, a half-century marked by profound artistic innovation and enduring consequence.</p>
-
+        <p class="drop-cap-target">The English Romantic period, a transformative era in literary and cultural history, is generally considered to span from the late eighteenth century to the mid-nineteenth century. While precise dating remains debated among scholars, common starting points range from the 1780s to the publication of William Wordsworth and Samuel Taylor Coleridge's Lyrical Ballads in 1798, with endpoints often cited around the Reform Act of 1832, the accession of Queen Victoria in 1837, or even mid-century. For the purposes of English literature, the core period is frequently delineated as approximately 1785 to 1832, a half-century marked by profound artistic innovation and enduring consequence.</p>
         <h2>Section 2: Main Discussion</h2>
-        <p>Start breaking down your main points here. Use paragraphs to organize different ideas. Make sure each paragraph flows logically into the next.</p>
+        <p>Start breaking down your main points here. Use paragraphs to organize different ideas. Make sure each paragraph flows logically into the next. Here is a link example: <a href="#">This is an example link</a>.</p>
 
         <h3>Subheading: A Specific Detail</h3>
         <p>Expand deeper into a particular point. Subheadings help guide the reader and make long articles easier to scan and understand. Justified text can sometimes create larger gaps between words, especially with short lines. If this becomes an issue on mobile, you might consider keeping left alignment or using hyphenation.</p>
+        <p>Here is some more text to make the page scrollable and demonstrate the progress bar. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+         <p>Another paragraph to add more content. Suspendisse potenti. Proin ut augue sed leo tincidunt fringilla. Nullam ac lacus sed metus finibus elementum. Vestibulum eu libero finibus, blandit libero ac, feugiat ligula. Sed laoreet dolor vel turpis aliquet, sit amet scelerisque orci consectetur. Vivamus vitae arcu eget risus laoreet tincidunt. Sed ac magna vitae leo aliquam volutpat.</p>
+
+         <blockquote>
+             <p>This is an example of a blockquote. It's useful for highlighting quotes from other sources or for visually separating important text.</p>
+             <p>Quotes can span multiple paragraphs.</p>
+         </blockquote>
+
+        <p>And yet another paragraph. Curabitur sit amet nunc at erat facilisis tincidunt. Sed et dolor vitae nisi tristique finibus. Aliquam erat volutpat. Sed malesuada massa nec risus bibendum, sit amet bibendum lorem cursus. Donec finibus, felis nec ultricies ullamcorper, lectus nisl ultrices nisl, vel fermentum est velit at justo. Maecenas id augue vitae justo luctus facilisis. Fusce vel ex vel velit volutpat vestibulum.</p>
+        <p>More text to fill space. In hac habitasse platea dictumst. Aenean ac dolor sit amet justo ultricies dignissim non sit amet turpis. Sed sed ex at justo feugiat facilisis. Mauris nec quam eget erat vulputate posuere. Quisque et sem nec elit blandit efficitur. Suspendisse potenti.</p>
+
+        <hr>
 
         <h2>Section 3: Key Takeaways</h2>
         <ul>
@@ -234,9 +421,188 @@
 
         <h2>Conclusion</h2>
         <p>Wrap up your article with a conclusion paragraph. Reflect back on what was discussed, offer final thoughts, or encourage the reader to take action.</p>
+         <p>Final paragraph to ensure the bottom of the page is distinct. Thanks for reading!</p>
+
 
     </div>
+
+    <footer class="page-footer">
+        <p>&copy; 2025 JOY DAS. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+
+        // --- Progress Bar Logic ---
+        const progressBar = document.getElementById('progress-bar');
+
+        function updateProgressBar() {
+            const docHeight = document.documentElement.scrollHeight;
+            const viewportHeight = window.innerHeight;
+            const scrollPos = window.scrollY;
+
+            const maxScroll = docHeight - viewportHeight;
+
+            if (maxScroll <= 0) {
+                progressBar.style.width = '100%';
+            } else {
+                 const progress = (scrollPos / maxScroll) * 100;
+                 progressBar.style.width = Math.max(0, Math.min(progress, 100)) + '%';
+            }
+
+             // Add class to body when scrolled down slightly to show focus button
+            if (scrollPos > 50) { // Adjust 50px threshold as needed
+                document.body.classList.add('scrolled');
+            } else {
+                document.body.classList.remove('scrolled');
+            }
+        }
+
+        window.addEventListener('scroll', updateProgressBar);
+        window.addEventListener('load', updateProgressBar);
+        window.addEventListener('resize', updateProgressBar);
+        updateProgressBar(); // Initial call
+        // --- END Progress Bar Logic ---
+
+
+        // --- Focus Mode Logic ---
+        const focusToggleBtn = document.getElementById('focus-mode-toggle');
+        const contentDiv = document.querySelector('.content');
+        // Select all direct block-level children of .content to consider as "blocks"
+        const contentBlocks = contentDiv.querySelectorAll(':scope > p, :scope > h1, :scope > h2, :scope > h3, :scope > ul, :scope > ol, :scope > blockquote, :scope > hr, :scope > .article-audio, :scope > .article-meta');
+
+        let isFocusModeActive = false;
+        let lastActiveBlock = null;
+
+        function findActiveBlock() {
+            const viewportHeight = window.innerHeight;
+            const activationThreshold = 100; // Adjust as needed (e.g., 100px from top)
+            let activeBlock = null;
+
+            for (let i = 0; i < contentBlocks.length; i++) {
+                const block = contentBlocks[i];
+                const rect = block.getBoundingClientRect();
+
+                if (rect.top <= activationThreshold && rect.bottom > activationThreshold) {
+                    activeBlock = block;
+                    break;
+                }
+
+                 if (rect.top > activationThreshold && rect.top < viewportHeight) {
+                     activeBlock = block;
+                     break;
+                 }
+            }
+
+            if (!activeBlock && window.scrollY === 0 && contentBlocks.length > 0) {
+                 activeBlock = contentBlocks[0];
+            } else if (!activeBlock && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight && contentBlocks.length > 0) {
+                activeBlock = contentBlocks[contentBlocks.length - 1];
+            }
+
+            return activeBlock;
+        }
+
+        function handleFocusScroll() {
+            const activeBlock = findActiveBlock();
+
+            if (lastActiveBlock && lastActiveBlock !== activeBlock) {
+                lastActiveBlock.classList.remove('active-block');
+            }
+
+            if (activeBlock) {
+                activeBlock.classList.add('active-block');
+                lastActiveBlock = activeBlock;
+            } else {
+                 if (lastActiveBlock) {
+                      lastActiveBlock.classList.remove('active-block');
+                 }
+                 lastActiveBlock = null;
+            }
+        }
+
+        function toggleFocusMode() {
+            isFocusModeActive = !isFocusModeActive;
+            document.body.classList.toggle('focus-mode-active', isFocusModeActive);
+            focusToggleBtn.textContent = isFocusModeActive ? 'Exit Focus Mode' : 'Focus Mode';
+            focusToggleBtn.setAttribute('title', isFocusModeActive ? 'Exit Focus Mode' : 'Toggle Focus Mode');
+
+
+            if (isFocusModeActive) {
+                window.addEventListener('scroll', handleFocusScroll);
+                handleFocusScroll(); // Initial call
+            } else {
+                window.removeEventListener('scroll', handleFocusScroll);
+                if (lastActiveBlock) {
+                    lastActiveBlock.classList.remove('active-block');
+                }
+                lastActiveBlock = null;
+            }
+        }
+
+        focusToggleBtn.addEventListener('click', toggleFocusMode);
+        // --- END Focus Mode Logic ---
+
+
+        // --- Estimated Reading Time Logic ---
+        const readingTimeElement = document.querySelector('.reading-time');
+        const wordsPerMinute = 225; // Average reading speed
+
+        function calculateReadingTime() {
+            // Get text content from the main article content area
+            const articleText = contentDiv.textContent;
+
+            // Simple word count by splitting text by spaces and filtering empty strings
+            const wordCount = articleText.trim().split(/\s+/).filter(word => word.length > 0).length;
+
+            // Calculate minutes, rounding up
+            const minutes = Math.ceil(wordCount / wordsPerMinute);
+
+            // Update the HTML element
+            if (readingTimeElement) {
+                 readingTimeElement.textContent = `${minutes} min read`;
+            }
+        }
+
+        calculateReadingTime();
+        // --- END Estimated Reading Time Logic ---
+
+
+        // --- NEW: Dynamic Drop Cap Logic - MODIFIED TO TARGET SPECIFIC CLASS ---
+         function applyDropCap() {
+            // Find the paragraph with the class "drop-cap-target"
+            const targetParagraph = contentDiv.querySelector('.drop-cap-target');
+
+            // Ensure the target paragraph exists and has text content
+            if (targetParagraph && targetParagraph.textContent.trim().length > 0) {
+                const text = targetParagraph.textContent.trim();
+                const firstLetter = text.charAt(0);
+
+                // Check if the first character is a letter
+                if (firstLetter.match(/[a-zA-Z]/)) {
+                    // Temporarily store inner HTML to avoid issues with nodes
+                    const originalInnerHTML = targetParagraph.innerHTML;
+                    // Wrap the first letter in a span
+                    const wrappedLetter = `<span class="drop-cap">${firstLetter}</span>`;
+                    // Find the index of the first letter in the original text content
+                    const firstLetterIndex = targetParagraph.textContent.indexOf(firstLetter); // Use textContent for index
+
+                    // Reconstruct the HTML with the wrapped letter
+                    // This is a bit more robust than substring on innerHTML
+                    targetParagraph.innerHTML = wrappedLetter + originalInnerHTML.substring(firstLetterIndex + 1);
+
+                }
+            }
+        }
+
+        // Apply the drop cap after the DOM is ready
+        applyDropCap();
+        // --- END NEW ---
+
+    }); // End DOMContentLoaded
+</script>
 </body>
 </html>
