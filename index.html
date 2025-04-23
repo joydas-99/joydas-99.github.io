@@ -1,126 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title> Das </title>
+    <title>Joy Das - Writer & Thinker</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Personal blog of Joy Das featuring articles on international affairs, literature, and technology">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/kube.min.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/custom.min.css" />
     <link rel="shortcut icon" href="img/favicon.ico" />
-    <style href="www.joydas.me">
-        /* Existing style */
-        /* .intro h3:before { */
-            /* Edit this with your name or anything else */
-            /* content: 'Joy Das'; */
-        /* } */ /* Removed as per requirement to replace with banner */
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-text: #666;
+            --bg-color: #f9f9f7;
+            --border-color: #e0e0e0;
+            --highlight-color: #fff1a8;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --section-padding: 40px 0;
+        }
 
-        /* --- NEW FONT STYLE (Body Font - often serif for news sites) --- */
         body {
-            font-family: Georgia, Times, 'Times New Roman', serif;
-            /* Optional: Adjust base font size and line height for better readability */
-            /* font-size: 17px; */
-            /* line-height: 1.6; */
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
         }
 
-        /* Exclude the daily quote section from the new font */
-        /* Revert quote text and author to a common sans-serif font, or inherit default */
-        .daily-quote blockquote,
-        .daily-quote cite {
-             font-family: Arial, Helvetica, sans-serif; /* Or specify a different font if preferred */
-             /* Ensure other quote styles are kept or reset if needed */
-             font-style: italic; /* Keep the italic style */
+        /* Improved Banner Style */
+        .atlantic-banner {
+            text-align: center;
+            padding: 15px 0;
+            margin: 0;
+            border-top: 2px solid var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            background-color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px var(--shadow-color);
         }
-        /* --- END NEW FONT STYLE --- */
 
+        .atlantic-banner h1 {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 2.8rem;
+            font-weight: normal;
+            margin: 0;
+            padding: 0;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-        /* Style for article links */
+        .atlantic-banner h1:hover {
+            color: var(--accent-color);
+            transition: color 0.3s ease;
+        }
+
+        /* Intro Section */
+        .intro.section {
+            padding: var(--section-padding);
+            background-color: white;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .intro .units-row {
+            align-items: center;
+        }
+
+        .intro img {
+            border-radius: 50%;
+            border: 3px solid var(--border-color);
+            max-width: 150px;
+            height: auto;
+        }
+
+        .intro h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .intro h1 span {
+            color: var(--accent-color);
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* Article Sections */
+        .section {
+            padding: var(--section-padding);
+            background-color: white;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section h1 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Article List */
+        .article-list {
+            list-style: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
         .article-list li {
-            margin-bottom: 10px; /* Add some space between list items */
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .article-list li:last-child {
+            border-bottom: none;
         }
 
         .article-list a {
-            text-decoration: none; /* Remove underline from links */
-            color: #333; /* Set link color */
-            font-weight: bold; /* Make link text bold */
+            text-decoration: none;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            font-weight: bold;
+            transition: color 0.3s ease;
         }
 
         .article-list a:hover {
-             text-decoration: underline; /* Add underline on hover */
+            color: var(--accent-color);
+            text-decoration: underline;
         }
 
-        .article-list .article-date {
-            font-size: 0.9em;
-            color: #777;
-            display: block; /* Make date appear on its own line */
-            margin-top: 2px;
+        .article-date {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin: 5px 0;
+            display: block;
         }
 
-         .article-list .article-intro {
-            font-size: 0.95em;
-            color: #555;
-            margin-top: 5px;
-            line-height: 1.5;
-         }
+        .article-intro {
+            font-size: 1rem;
+            color: var(--text-color);
+            line-height: 1.6;
+            margin-top: 8px;
+        }
 
-         /* --- Refined The Atlantic-like Banner Style --- */
-         .atlantic-banner {
-               text-align: center;
-               padding: 10px 0; /* Slightly reduced padding */
-               margin-bottom: 15px; /* Reduced space after the banner */
-               border-top: 1px solid #000;
-               border-bottom: 1px solid #000;
-         }
+        /* Quote Sections */
+        .quote {
+            padding: 30px 0;
+            text-align: center;
+            background-color: var(--primary-color);
+            color: white;
+        }
 
-         .atlantic-banner h1 {
-               font-family: "Times New Roman", Times, serif;
-               font-size: 2.8em;
-               font-weight: normal;
-               margin: 0;
-               padding: 0;
-               color: #000;
-               text-transform: uppercase;
-               letter-spacing: 0.5px;
-         }
-         /* --- END Refined The Atlantic-like Banner Style --- */
+        .quote h1 {
+            font-size: 2rem;
+            margin: 0;
+            font-style: italic;
+        }
 
-         /* --- Adjustment for Intro Section Padding --- */
-         /* The .intro.section likely has padding from kube.min.css or custom.min.css */
-         /* We'll add a rule specifically for the top padding */
-         .intro.section {
-             padding-top: 20px; /* Reduced top padding */
-         }
-         /* --- END Adjustment --- */
+        .daily-quote {
+            padding: 40px 0;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
 
-         /* --- Guardian-style Selection Highlight --- */
-         ::selection {
-             background-color: #fff1a8; /* A Guardian-like yellow */
-             color: #000000; /* Black text color for contrast */
-         }
+        .daily-quote h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
 
-         ::-moz-selection { /* Firefox */
-             background-color: #fff1a8;
-             color: #000000;
-         }
-         /* --- END Guardian-style Selection Highlight --- */
+        #quote-text {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            font-style: italic;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
+        #quote-author {
+            font-size: 1.1rem;
+            display: block;
+            color: var(--light-text);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .social {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Typed.js Animation */
+        #typed {
+            min-height: 1.5em; /* Prevent layout shift during animation */
+        }
+
+        /* Selection Highlight */
+        ::selection {
+            background-color: var(--highlight-color);
+            color: var(--text-color);
+        }
+
+        ::-moz-selection {
+            background-color: var(--highlight-color);
+            color: var(--text-color);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .atlantic-banner h1 {
+                font-size: 2rem;
+            }
+            
+            .intro h1 {
+                font-size: 2rem;
+            }
+            
+            .intro .unit-20 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            .intro img {
+                max-width: 120px;
+            }
+            
+            .section h1 {
+                font-size: 1.7rem;
+            }
+            
+            .article-list a {
+                font-size: 1.1rem;
+            }
+            
+            #quote-text {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .atlantic-banner h1 {
+                font-size: 1.5rem;
+            }
+            
+            .intro h1 {
+                font-size: 1.5rem;
+            }
+            
+            .section h1 {
+                font-size: 1.4rem;
+            }
+            
+            .article-list a {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
 
     <div class="atlantic-banner">
-        <h1 href="www.joydas.me">JOY DAS</h1>
+        <h1><a href="www.joydas.me" style="text-decoration: none; color: inherit;">JOY DAS</a></h1>
     </div>
 
     <div class="intro section" id="about">
         <div class="container">
             <div class="units-row units-split wrap">
                 <div class="unit-20">
-                    <img src="img/Untitled design (3).png" alt="Avatar">
+                    <img src="img/Untitled design (3).png" alt="Joy Das">
                 </div>
                 <div class="unit-80">
-                    <h1> Life is <br><span id="typed"></span></h1>
+                    <h1>Life is <br><span id="typed"></span></h1>
                 </div>
                 <p>
                     Not of passion but out of sheer interest and curiosity, I was impelled to create this new medium of communication to share my views with the rest of the world.
@@ -131,7 +320,7 @@
 
     <div class="work section second" id="experiences">
         <div class="container">
-            <h1> International</h1>
+            <h1>International</h1>
             <ul class="article-list list-flat">
                  <li>
                     <a href="INT page 1.html">Article One Title Here</a>
@@ -149,7 +338,7 @@
 
     <div class="award section second" id="achievements">
         <div class="container">
-            <h1> Literature </h1>
+            <h1>Literature</h1>
              <ul class="article-list list-flat">
                  <li>
                       <a href="LIT Page 1.html">Literature Article One Title</a>
@@ -161,13 +350,13 @@
                       <span class="article-date">Publication Date</span>
                       <p class="article-intro">Brief introduction or summary of Literature Article Two...</p>
                  </li>
-                 </ul>
-             </div>
+             </ul>
+        </div>
     </div>
 
     <div class="skills section second" id="skills">
         <div class="container">
-            <h1>Technology </h1>
+            <h1>Technology</h1>
              <ul class="article-list list-flat">
                  <li>
                       <a href="Tech page 1.html">Technology Article One Title</a>
@@ -179,8 +368,8 @@
                       <span class="article-date">Publication Date</span>
                       <p class="article-intro">Brief introduction or summary of Technology Article Two...</p>
                  </li>
-                 </ul>
-             </div>
+             </ul>
+        </div>
     </div>
 
     <div class="quote">
@@ -189,29 +378,26 @@
         </div>
     </div>
 
-    <div class="daily-quote section" style="padding: 30px 0; text-align: center; background-color: #f4f4f4;">
+    <div class="daily-quote section">
         <div class="container">
             <h2>Quote of the Day</h2>
-            <blockquote id="quote-text" style="font-size: 1.4em; margin-bottom: 10px; font-style: italic;">
-                Loading quote...
-            </blockquote>
-            <cite id="quote-author" style="font-size: 1.1em; display: block;">
-                </cite>
+            <blockquote id="quote-text">Loading quote...</blockquote>
+            <cite id="quote-author"></cite>
         </div>
     </div>
-
 
     <footer>
         <div class="container">
             <div class="units-row">
                 <div class="unit-50">
-                 <p> Connect with me here >>>>>>>>>>>>> </p>	</div>
+                    <p>Connect with me here >>>>>>>>>>>>></p>
+                </div>
                 <div class="unit-50">
                     <ul class="social list-flat right">
-                        <li><a href="joydasofficial99@gmail.com"><i class="fa fa-send"></i></a></li>
-                        <li><a href="http://twitter.com/flamekaizar"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="http://dribbble.com/flamekaizar"><i class="fa fa-dribbble"></i></a></li>
-                        <li><a href="http://behance.com/flamekaizar"><i class="fa fa-behance"></i></a></li>
+                        <li><a href="joydasofficial99@gmail.com"><i class="fas fa-envelope"></i></a></li>
+                        <li><a href="http://twitter.com/flamekaizar" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="http://dribbble.com/flamekaizar" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+                        <li><a href="http://behance.com/flamekaizar" target="_blank"><i class="fab fa-behance"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -223,16 +409,22 @@
     <script src="js/kube.min.js"></script>
     <script src="js/site.js"></script>
     <script>
-        // Typed.js animation (existing script)
-		function newTyped(){}$(function(){$("#typed").typed({
-		strings: ["hard", "fun", "interesting", "depressing","full of struggle","a journey of wisdom", " Worth living"],
-		typeSpeed:90,backDelay:700,contentType:"html",loop:!0,resetCallback:function(){newTyped()}}),$(".reset").click(function(){$("#typed").typed("reset")})});
+        // Typed.js animation
+        function newTyped(){}
+        $(function(){
+            $("#typed").typed({
+                strings: ["hard", "fun", "interesting", "depressing", "full of struggle", "a journey of wisdom", "Worth living"],
+                typeSpeed: 90,
+                backDelay: 700,
+                contentType: "html",
+                loop: true,
+                resetCallback: function(){newTyped()}
+            });
+            $(".reset").click(function(){$("#typed").typed("reset")});
+        });
 
-        // --- Daily Quote Logic ---
+        // Daily Quote Logic
         document.addEventListener('DOMContentLoaded', function() {
-            // ---!!! IMPORTANT: Add your 365 quotes here !!!---
-            // This is a small sample list. You need to expand this list significantly.
-            // Each quote is an object with 'text' and 'author' properties.
             const quotes = [
                 { text: "The only true wisdom is in knowing you know nothing.", author: "Socrates" },
                 { text: "The unexamined life is not worth living.", author: "Socrates" },
@@ -249,35 +441,25 @@
                 { text: "The journey of a thousand miles begins with a single step.", author: "Lao Tzu" },
                 { text: "That which does not kill us makes us stronger.", author: "Friedrich Nietzsche" },
                 { text: "Happiness depends upon ourselves.", author: "Aristotle" },
-                // Add many more quotes here to reach 365...
-                // Example: { text: "Quote text here.", author: "Author Name" },
+                // Add more quotes here...
             ];
 
-            // Get current date
             const today = new Date();
-
-            // Calculate the day of the year (1-366)
             const startOfYear = new Date(today.getFullYear(), 0, 0);
             const diff = today - startOfYear;
             const oneDay = 1000 * 60 * 60 * 24;
-            const dayOfYear = Math.floor(diff / oneDay); // This gives day number 1 to 366
-
-            // Select quote based on the day of the year
-            // The modulo operator (%) ensures we loop back to the beginning if dayOfYear > number of quotes
-            const quoteIndex = (dayOfYear - 1) % quotes.length; // Adjust index to be 0-based
+            const dayOfYear = Math.floor(diff / oneDay);
+            const quoteIndex = (dayOfYear - 1) % quotes.length;
             const selectedQuote = quotes[quoteIndex];
 
-            // Update the HTML elements
             const quoteTextElement = document.getElementById('quote-text');
             const quoteAuthorElement = document.getElementById('quote-author');
 
             if (quoteTextElement && quoteAuthorElement && selectedQuote) {
                  quoteTextElement.textContent = `"${selectedQuote.text}"`;
                  quoteAuthorElement.textContent = `- ${selectedQuote.author}`;
-            } else {
-                 // Fallback if elements or quote not found
-                 if (quoteTextElement) quoteTextElement.textContent = "Could not load quote.";
-                 console.error("Could not find quote elements or selected quote.");
+            } else if (quoteTextElement) {
+                 quoteTextElement.textContent = "Wisdom begins in wonder.";
             }
         });
     </script>
