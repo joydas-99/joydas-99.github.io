@@ -66,25 +66,32 @@
 
          /* --- Refined The Atlantic-like Banner Style --- */
          .atlantic-banner {
-             text-align: center;
-             padding: 15px 0;
-             margin-bottom: 30px; /* Space after the banner */
-             border-top: 1px solid #000; /* Optional: Add a line above */
-             border-bottom: 1px solid #000; /* Optional: Add a line below */
+              text-align: center;
+              padding: 10px 0; /* Slightly reduced padding */
+              margin-bottom: 15px; /* Reduced space after the banner */
+              border-top: 1px solid #000;
+              border-bottom: 1px solid #000;
          }
 
          .atlantic-banner h1 {
-             /* Using a font stack that includes Times New Roman and potentially others */
-             font-family: "Times New Roman", Times, serif;
-             font-size: 2.8em; /* Slightly reduced size */
-             font-weight: normal; /* Use normal weight, not bold */
-             margin: 0;
-             padding: 0;
-             color: #000;
-             text-transform: uppercase; /* Keep uppercase */
-             letter-spacing: 0.5px; /* Slightly positive letter spacing */
+              font-family: "Times New Roman", Times, serif;
+              font-size: 2.8em;
+              font-weight: normal;
+              margin: 0;
+              padding: 0;
+              color: #000;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
          }
          /* --- END Refined The Atlantic-like Banner Style --- */
+
+         /* --- Adjustment for Intro Section Padding --- */
+         /* The .intro.section likely has padding from kube.min.css or custom.min.css */
+         /* We'll add a rule specifically for the top padding */
+         .intro.section {
+             padding-top: 20px; /* Reduced top padding */
+         }
+         /* --- END Adjustment --- */
 
 
     </style>
