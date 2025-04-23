@@ -233,7 +233,7 @@
          }
 
          .content blockquote p:last-child {
-             margin-bottom: 0;
+              margin-bottom: 0;
          }
 
          /* Footer Styles */
@@ -296,68 +296,80 @@
 
          /* Responsive adjustments for smaller screens */
          @media (max-width: 600px) {
-             body {
-                 padding: 20px 10px;
-             }
-             .page-nav {
-                 padding: 15px 15px 8px 15px;
-                 margin-bottom: 0;
-             }
-             .page-nav a {
-                 margin: 0 8px;
-                 font-size: 0.9em;
-             }
-             .article-audio {
-                 padding: 0px 0 8px 0;
-                 margin-bottom: 12px;
-                 margin-top: 0px;
-             }
-             .article-audio h3 {
-                 font-size: 0.9em;
-                 margin-bottom: 3px;
-             }
-             .article-audio audio {
-                margin-top: 4px;
-             }
+              body {
+                  padding: 20px 10px;
+              }
+              .page-nav {
+                  padding: 15px 15px 8px 15px;
+                  margin-bottom: 0;
+              }
+              .page-nav a {
+                  margin: 0 8px;
+                  font-size: 0.9em;
+              }
+              .article-audio {
+                  padding: 0px 0 8px 0;
+                  margin-bottom: 12px;
+                  margin-top: 0px;
+              }
+              .article-audio h3 {
+                  font-size: 0.9em;
+                  margin-bottom: 3px;
+              }
+              .article-audio audio {
+                 margin-top: 4px;
+              }
 
-             .content {
-                 padding: 10px 15px 30px 15px;
-             }
-             .article-meta {
-                margin-bottom: 1rem;
+              .content {
+                  padding: 10px 15px 30px 15px;
+              }
+              .article-meta {
+                 margin-bottom: 1rem;
                  flex-direction: column; /* Stack meta and reading time */
                  align-items: flex-start; /* Align stack to the left */
-             }
-             .reading-time {
+              }
+              .reading-time {
                  text-align: left; /* Align left when stacked */
                  margin-top: 5px; /* Add space above */
-             }
-
-              .content h1 { font-size: 2rem; margin-bottom: 0.4rem; }
-              .content h2 { font-size: 1.5rem; margin-top: 1.8rem; margin-bottom: 0.8rem; }
-              .content h3 { font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.7rem; }
-              .content { font-size: 1rem; }
-              .content p, .content ul, .content ol, .content li { margin-bottom: 1.2rem; }
-
-              /* Blockquote Mobile Adjustments */
-              .content blockquote {
-                 margin: 1.5rem 0;
-                 padding: 0.8rem 1rem;
               }
 
-              /* Footer Mobile Adjustments */
-              .page-footer {
-                 padding: 15px 15px;
-              }
+               .content h1 { font-size: 2rem; margin-bottom: 0.4rem; }
+               .content h2 { font-size: 1.5rem; margin-top: 1.8rem; margin-bottom: 0.8rem; }
+               .content h3 { font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.7rem; }
+               .content { font-size: 1rem; }
+               .content p, .content ul, .content ol, .content li { margin-bottom: 1.2rem; }
 
-              /* Focus Mode Toggle Button Mobile */
-              #focus-mode-toggle {
-                  top: 10px;
-                  right: 10px;
-                  padding: 3px 8px;
-                  font-size: 0.7em;
-              }
+               /* Blockquote Mobile Adjustments */
+               .content blockquote {
+                  margin: 1.5rem 0;
+                  padding: 0.8rem 1rem;
+               }
+
+               /* Footer Mobile Adjustments */
+               .page-footer {
+                  padding: 15px 15px;
+               }
+
+               /* Focus Mode Toggle Button Mobile */
+               #focus-mode-toggle {
+                   top: 10px;
+                   right: 10px;
+                   padding: 3px 8px;
+                   font-size: 0.7em;
+               }
          }
+
+         /* --- Guardian-style Selection Highlight --- */
+         ::selection {
+             background-color: #fff1a8; /* A Guardian-like yellow */
+             color: #000000; /* Black text color for contrast */
+         }
+
+         ::-moz-selection { /* Firefox */
+             background-color: #fff1a8;
+             color: #000000;
+         }
+         /* --- END Guardian-style Selection Highlight --- */
 
     </style>
 </head>
@@ -379,7 +391,7 @@
 
         <div class="article-meta">
             <span>By [Your Name]</span>
-            <span>On [Date of Publication]</span>
+            <span>On [Date of Publication, e.g., April 23, 2025]</span>
             <span class="reading-time"></span>
         </div>
 
@@ -449,11 +461,11 @@
             if (maxScroll <= 0) {
                 progressBar.style.width = '100%';
             } else {
-                 const progress = (scrollPos / maxScroll) * 100;
-                 progressBar.style.width = Math.max(0, Math.min(progress, 100)) + '%';
+                const progress = (scrollPos / maxScroll) * 100;
+                progressBar.style.width = Math.max(0, Math.min(progress, 100)) + '%';
             }
 
-             // Add class to body when scrolled down slightly to show focus button
+            // Add class to body when scrolled down slightly to show focus button
             if (scrollPos > 50) { // Adjust 50px threshold as needed
                 document.body.classList.add('scrolled');
             } else {
@@ -491,14 +503,14 @@
                     break;
                 }
 
-                 if (rect.top > activationThreshold && rect.top < viewportHeight) {
+                if (rect.top > activationThreshold && rect.top < viewportHeight) {
                      activeBlock = block;
                      break;
-                 }
+                }
             }
 
             if (!activeBlock && window.scrollY === 0 && contentBlocks.length > 0) {
-                 activeBlock = contentBlocks[0];
+                activeBlock = contentBlocks[0];
             } else if (!activeBlock && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight && contentBlocks.length > 0) {
                 activeBlock = contentBlocks[contentBlocks.length - 1];
             }
@@ -517,10 +529,10 @@
                 activeBlock.classList.add('active-block');
                 lastActiveBlock = activeBlock;
             } else {
-                 if (lastActiveBlock) {
-                      lastActiveBlock.classList.remove('active-block');
-                 }
-                 lastActiveBlock = null;
+                if (lastActiveBlock) {
+                     lastActiveBlock.classList.remove('active-block');
+                }
+                lastActiveBlock = null;
             }
         }
 
@@ -573,33 +585,33 @@
 
         // --- NEW: Dynamic Drop Cap Logic - MODIFIED TO TARGET SPECIFIC CLASS ---
          function applyDropCap() {
-            // Find the paragraph with the class "drop-cap-target"
-            const targetParagraph = contentDiv.querySelector('.drop-cap-target');
+             // Find the paragraph with the class "drop-cap-target"
+             const targetParagraph = contentDiv.querySelector('.drop-cap-target');
 
-            // Ensure the target paragraph exists and has text content
-            if (targetParagraph && targetParagraph.textContent.trim().length > 0) {
-                const text = targetParagraph.textContent.trim();
-                const firstLetter = text.charAt(0);
+             // Ensure the target paragraph exists and has text content
+             if (targetParagraph && targetParagraph.textContent.trim().length > 0) {
+                 const text = targetParagraph.textContent.trim();
+                 const firstLetter = text.charAt(0);
 
-                // Check if the first character is a letter
-                if (firstLetter.match(/[a-zA-Z]/)) {
-                    // Temporarily store inner HTML to avoid issues with nodes
-                    const originalInnerHTML = targetParagraph.innerHTML;
-                    // Wrap the first letter in a span
-                    const wrappedLetter = `<span class="drop-cap">${firstLetter}</span>`;
-                    // Find the index of the first letter in the original text content
-                    const firstLetterIndex = targetParagraph.textContent.indexOf(firstLetter); // Use textContent for index
+                 // Check if the first character is a letter
+                 if (firstLetter.match(/[a-zA-Z]/)) {
+                     // Temporarily store inner HTML to avoid issues with nodes
+                     const originalInnerHTML = targetParagraph.innerHTML;
+                     // Wrap the first letter in a span
+                     const wrappedLetter = `<span class="drop-cap">${firstLetter}</span>`;
+                     // Find the index of the first letter in the original text content
+                     const firstLetterIndex = targetParagraph.textContent.indexOf(firstLetter); // Use textContent for index
 
-                    // Reconstruct the HTML with the wrapped letter
-                    // This is a bit more robust than substring on innerHTML
-                    targetParagraph.innerHTML = wrappedLetter + originalInnerHTML.substring(firstLetterIndex + 1);
+                     // Reconstruct the HTML with the wrapped letter
+                     // This is a bit more robust than substring on innerHTML
+                     targetParagraph.innerHTML = wrappedLetter + originalInnerHTML.substring(firstLetterIndex + 1);
 
-                }
-            }
-        }
+                 }
+             }
+         }
 
-        // Apply the drop cap after the DOM is ready
-        applyDropCap();
+         // Apply the drop cap after the DOM is ready
+         applyDropCap();
         // --- END NEW ---
 
     }); // End DOMContentLoaded
