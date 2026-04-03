@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Janala.page - Writer & Thinker</title>
+    <title>Janala - A Window to the World</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Janala.page featuring articles on international affairs, literature, and technology">
+    <meta name="description" content="Janala featuring articles on international affairs, literature, and technology">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/kube.min.css" />
@@ -18,7 +18,7 @@
     <style>
         :root {
             --primary-color: #2c3e50;
-            --accent-color: #c0392b;
+            --accent-color: #c84b31; /* Terracotta red for a traditional Bengali touch */
             --text-color: #333333;
             --light-text: #666666;
             --bg-color: #fcfcfc;
@@ -29,10 +29,9 @@
             --transition-speed: 0.3s;
         }
 
-        /* Dark Mode Variables */
         [data-theme="dark"] {
-            --primary-color: #f1c40f;
-            --accent-color: #e74c3c;
+            --primary-color: #e0b04a; /* Golden mustard tone */
+            --accent-color: #d35400;
             --text-color: #e0e0e0;
             --light-text: #a0a0a0;
             --bg-color: #121212;
@@ -49,7 +48,6 @@
             transition: background-color var(--transition-speed), color var(--transition-speed);
         }
 
-        /* Theme Toggle Button */
         .theme-toggle {
             position: absolute;
             top: 20px;
@@ -67,7 +65,6 @@
             transform: scale(1.1);
         }
 
-        /* Upgraded Stylish Banner */
         .atlantic-banner {
             text-align: center;
             padding: 25px 0;
@@ -99,47 +96,75 @@
             transform: scale(1.02);
         }
 
-        /* Intro Section */
-        .intro.section {
-            padding: 80px 0 60px;
+        /* New Hero & Search Section */
+        .hero.section {
+            padding: 70px 20px 50px;
             background-color: var(--bg-color);
             text-align: center;
         }
 
-        .intro h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--text-color);
+        .hero-subtitle {
+            font-family: 'Tiro Bangla', 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-weight: bold;
         }
 
-        .intro h1 span {
-            color: var(--accent-color);
+        .hero-text {
+            font-size: 1.25rem;
+            max-width: 650px;
+            margin: 0 auto 40px;
+            color: var(--light-text);
             font-style: italic;
         }
 
-        .intro p {
-            font-size: 1.25rem;
-            max-width: 700px;
+        .search-container {
+            max-width: 600px;
             margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px 15px 50px;
+            font-size: 1.1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 30px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            outline: none;
+            transition: all var(--transition-speed);
+            box-shadow: 0 4px 6px var(--shadow-color);
+            font-family: 'Lora', serif;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 12px rgba(200, 75, 49, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
             color: var(--light-text);
+            font-size: 1.2rem;
         }
 
         /* Article Sections */
-        .section {
-            padding: var(--section-padding);
-        }
-
-        .section h1 {
+        .section-heading {
             font-family: 'Playfair Display', serif;
             font-size: 2.2rem;
             color: var(--text-color);
             margin-bottom: 40px;
             text-align: center;
             position: relative;
+            padding-top: 40px;
         }
 
-        .section h1::after {
+        .section-heading::after {
             content: '';
             display: block;
             width: 60px;
@@ -149,15 +174,14 @@
             border-radius: 2px;
         }
 
-        /* Modern Grid Layout for Articles */
         .article-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 30px;
-            padding: 0;
+            padding: 0 20px;
             list-style: none;
             max-width: 1100px;
-            margin: 0 auto;
+            margin: 0 auto 60px;
         }
 
         .article-card {
@@ -236,7 +260,6 @@
             border-top: 1px solid var(--border-color);
             padding: 50px 0;
             text-align: center;
-            margin-top: 40px;
         }
 
         footer p {
@@ -266,17 +289,21 @@
             transform: translateY(-3px);
         }
 
-        /* Typed.js Animation */
-        #typed {
-            min-height: 1.5em;
+        /* No Results Message */
+        #no-results {
+            display: none;
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--light-text);
+            padding: 40px;
+            grid-column: 1 / -1;
         }
 
-        /* Responsive Adjustments */
         @media (max-width: 768px) {
             .atlantic-banner h1 { font-size: 2.2rem; }
-            .intro h1 { font-size: 2.2rem; }
-            .section { padding: 40px 0; }
-            .article-grid { grid-template-columns: 1fr; padding: 0 20px; }
+            .hero-subtitle { font-size: 1.6rem; }
+            .section-heading { font-size: 1.8rem; }
+            .article-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -289,95 +316,86 @@
         <h1><a href="/" style="text-decoration: none; color: inherit;">JANALA.PAGE</a></h1>
     </div>
 
-    <div class="intro section" id="about">
+    <div class="hero section">
         <div class="container">
-            <div class="units-row units-split wrap">
-                <div class="unit-100">
-                    <h1>Life is <br><span id="typed"></span></h1>
-                </div>
-                <p>
-                    Not of passion but out of sheer interest and curiosity, I was impelled to create this new medium of communication to share my views with the rest of the world.
-                </p>
+            <p class="hero-subtitle">Janala • জানালা</p>
+            <p class="hero-text">A window into literature, society, and the world.</p>
+            
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search articles, topics, or keywords...">
             </div>
         </div>
     </div>
 
-    <div class="work section" id="experiences">
-        <div class="container">
-            <h1>International</h1>
-            <ul class="article-grid">
-                 <li class="article-card">
-                    <div class="article-meta">
-                        <span class="article-tag">Geopolitics</span>
-                        <span class="article-read-time"><i class="far fa-clock"></i> 5 min read</span>
-                    </div>
-                    <a href="INT page 1.html" class="title">Article One Title Here</a>
-                    <span class="article-date">April 22, 2025</span>
-                    <p class="article-intro">Brief introduction or summary of International Article One detailing the shifting dynamics of global power and diplomacy...</p>
-                 </li>
-                 <li class="article-card">
-                    <div class="article-meta">
-                        <span class="article-tag">Economy</span>
-                        <span class="article-read-time"><i class="far fa-clock"></i> 8 min read</span>
-                    </div>
-                    <a href="INT page 2.html" class="title">Article Two Title Here</a>
-                    <span class="article-date">April 23, 2025</span>
-                    <p class="article-intro">A deep dive into the economic policies shaping the new decade and what they mean for developing nations...</p>
-                 </li>
-             </ul>
-        </div>
-    </div>
+    <div class="main-content" id="articles-container">
+        <h1 class="section-heading">International</h1>
+        <ul class="article-grid">
+             <li class="article-card">
+                <div class="article-meta">
+                    <span class="article-tag">Geopolitics</span>
+                    <span class="article-read-time"><i class="far fa-clock"></i> 5 min read</span>
+                </div>
+                <a href="INT page 1.html" class="title">Article One Title Here</a>
+                <span class="article-date">April 22, 2025</span>
+                <p class="article-intro">Brief introduction or summary of International Article One detailing the shifting dynamics of global power and diplomacy...</p>
+             </li>
+             <li class="article-card">
+                <div class="article-meta">
+                    <span class="article-tag">Economy</span>
+                    <span class="article-read-time"><i class="far fa-clock"></i> 8 min read</span>
+                </div>
+                <a href="INT page 2.html" class="title">Article Two Title Here</a>
+                <span class="article-date">April 23, 2025</span>
+                <p class="article-intro">A deep dive into the economic policies shaping the new decade and what they mean for developing nations...</p>
+             </li>
+         </ul>
 
-    <div class="award section" id="achievements">
-        <div class="container">
-            <h1>Literature</h1>
-             <ul class="article-grid">
-                 <li class="article-card">
-                    <div class="article-meta">
-                        <span class="article-tag">Review</span>
-                        <span class="article-read-time"><i class="far fa-clock"></i> 6 min read</span>
-                    </div>
-                      <a href="LIT Page 1.html" class="title">Literature Article One Title</a>
-                      <span class="article-date">May 10, 2025</span>
-                      <p class="article-intro">An analytical look at modern literary movements and how classical tropes are being reimagined today...</p>
-                 </li>
-                 <li class="article-card">
-                    <div class="article-meta">
-                        <span class="article-tag">Essay</span>
-                        <span class="article-read-time"><i class="far fa-clock"></i> 10 min read</span>
-                    </div>
-                      <a href="LIT Page 2.html" class="title">Literature Article Two Title</a>
-                      <span class="article-date">May 15, 2025</span>
-                      <p class="article-intro">Exploring the boundaries of narrative structure in the 21st century novel through various critical lenses...</p>
-                 </li>
-             </ul>
-        </div>
-    </div>
+        <h1 class="section-heading">Literature</h1>
+         <ul class="article-grid">
+             <li class="article-card">
+                <div class="article-meta">
+                    <span class="article-tag">Review</span>
+                    <span class="article-read-time"><i class="far fa-clock"></i> 6 min read</span>
+                </div>
+                  <a href="LIT Page 1.html" class="title">Literature Article One Title</a>
+                  <span class="article-date">May 10, 2025</span>
+                  <p class="article-intro">An analytical look at modern literary movements and how classical tropes are being reimagined today...</p>
+             </li>
+             <li class="article-card">
+                <div class="article-meta">
+                    <span class="article-tag">Essay</span>
+                    <span class="article-read-time"><i class="far fa-clock"></i> 10 min read</span>
+                </div>
+                  <a href="LIT Page 2.html" class="title">Literature Article Two Title</a>
+                  <span class="article-date">May 15, 2025</span>
+                  <p class="article-intro">Exploring the boundaries of narrative structure in the 21st century novel through various critical lenses...</p>
+             </li>
+         </ul>
 
-    <div class="skills section" id="skills">
-        <div class="container">
-            <h1>Technology</h1>
-             <ul class="article-grid">
-                 <li class="article-card">
-                    <div class="article-meta">
-                        <span class="article-tag">Innovation</span>
-                        <span class="article-read-time"><i class="far fa-clock"></i> 4 min read</span>
-                    </div>
-                      <a href="Tech page 1.html" class="title">Technology Article One Title</a>
-                      <span class="article-date">June 02, 2025</span>
-                      <p class="article-intro">How emerging technologies are subtly altering human interaction and our perception of community...</p>
-                 </li>
-                  <li class="article-card">
-                    <div class="article-meta">
-                        <span class="article-tag">Ethics</span>
-                        <span class="article-read-time"><i class="far fa-clock"></i> 7 min read</span>
-                    </div>
-                      <a href="technology_article_two.html" class="title">Technology Article Two Title</a>
-                      <span class="article-date">June 18, 2025</span>
-                      <p class="article-intro">The philosophical implications of artificial intelligence and the future of creative endeavors...</p>
-                 </li>
-             </ul>
-        </div>
+        <h1 class="section-heading">Technology</h1>
+         <ul class="article-grid">
+             <li class="article-card">
+                <div class="article-meta">
+                    <span class="article-tag">Innovation</span>
+                    <span class="article-read-time"><i class="far fa-clock"></i> 4 min read</span>
+                </div>
+                  <a href="Tech page 1.html" class="title">Technology Article One Title</a>
+                  <span class="article-date">June 02, 2025</span>
+                  <p class="article-intro">How emerging technologies are subtly altering human interaction and our perception of community...</p>
+             </li>
+              <li class="article-card">
+                <div class="article-meta">
+                    <span class="article-tag">Ethics</span>
+                    <span class="article-read-time"><i class="far fa-clock"></i> 7 min read</span>
+                </div>
+                  <a href="technology_article_two.html" class="title">Technology Article Two Title</a>
+                  <span class="article-date">June 18, 2025</span>
+                  <p class="article-intro">The philosophical implications of artificial intelligence and the future of creative endeavors...</p>
+             </li>
+         </ul>
+         
+         <div id="no-results">No articles found matching your search.</div>
     </div>
 
     <footer>
@@ -392,29 +410,11 @@
         </div>
     </footer>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/typed.min.js"></script>
-    <script src="js/kube.min.js"></script>
-    <script src="js/site.js"></script>
     <script>
-        // Typed.js animation
-        function newTyped(){}
-        $(function(){
-            $("#typed").typed({
-                strings: ["complex.", "a canvas of ideas.", "meant to be questioned.", "worth documenting.", "a journey of wisdom."],
-                typeSpeed: 60,
-                backDelay: 1500,
-                contentType: "html",
-                loop: true,
-                resetCallback: function(){newTyped()}
-            });
-        });
-
         // Dark Mode Toggle Logic
         const toggleBtn = document.getElementById('theme-toggle');
         const icon = toggleBtn.querySelector('i');
         
-        // Check for saved user preference
         const currentTheme = localStorage.getItem('theme');
         if (currentTheme) {
             document.documentElement.setAttribute('data-theme', currentTheme);
@@ -434,6 +434,43 @@
                 document.documentElement.setAttribute('data-theme', 'dark');
                 localStorage.setItem('theme', 'dark');
                 icon.classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+
+        // Real-time Search Filtering Logic
+        const searchInput = document.getElementById('searchInput');
+        const articleCards = document.querySelectorAll('.article-card');
+        const sectionHeadings = document.querySelectorAll('.section-heading');
+        const noResultsMsg = document.getElementById('no-results');
+
+        searchInput.addEventListener('keyup', function() {
+            const searchTerm = this.value.toLowerCase();
+            let visibleCardsCount = 0;
+
+            // Filter individual cards
+            articleCards.forEach(card => {
+                const cardText = card.textContent.toLowerCase();
+                if (cardText.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                    visibleCardsCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Show or hide the "No results" message
+            if (visibleCardsCount === 0) {
+                noResultsMsg.style.display = 'block';
+            } else {
+                noResultsMsg.style.display = 'none';
+            }
+            
+            // Optional: Hide section headings if all cards under them are hidden
+            // (A simple approach for this specific layout structure)
+            if (searchTerm !== '') {
+                sectionHeadings.forEach(heading => heading.style.display = 'none');
+            } else {
+                sectionHeadings.forEach(heading => heading.style.display = 'block');
             }
         });
     </script>
