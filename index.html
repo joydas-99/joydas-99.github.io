@@ -28,7 +28,18 @@
             --section-padding: 60px 0;
             --transition-speed: 0.3s;
         }
+.search-container::after,
+.search-container::before {
+    display: none !important;
+    background-image: none !important;
+    content: none !important;
+}
 
+.hero .container hr,
+.hero .container svg {
+    display: none !important;
+}
+        
         [data-theme="dark"] {
             --primary-color: #e0b04a; /* Golden mustard tone */
             --accent-color: #d35400;
