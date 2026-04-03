@@ -5,163 +5,245 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Janala.page featuring articles on international affairs, literature, and technology">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/kube.min.css" />
     <link rel="stylesheet" href="css/custom.min.css" />
     <link rel="shortcut icon" href="img/favicon.ico" />
+    
     <style>
         :root {
             --primary-color: #2c3e50;
-            --secondary-color: #3498db;
+            --accent-color: #c0392b;
+            --text-color: #333333;
+            --light-text: #666666;
+            --bg-color: #fcfcfc;
+            --card-bg: #ffffff;
+            --border-color: #eaeaea;
+            --shadow-color: rgba(0, 0, 0, 0.08);
+            --section-padding: 60px 0;
+            --transition-speed: 0.3s;
+        }
+
+        /* Dark Mode Variables */
+        [data-theme="dark"] {
+            --primary-color: #f1c40f;
             --accent-color: #e74c3c;
-            --text-color: #333;
-            --light-text: #666;
-            --bg-color: #f9f9f7;
-            --border-color: #e0e0e0;
-            --highlight-color: #fff1a8;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-            --section-padding: 40px 0;
+            --text-color: #e0e0e0;
+            --light-text: #a0a0a0;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --border-color: #2c2c2c;
+            --shadow-color: rgba(0, 0, 0, 0.4);
         }
 
         body {
-            font-family: 'Georgia', 'Times New Roman', serif;
+            font-family: 'Lora', 'Georgia', serif;
             color: var(--text-color);
             background-color: var(--bg-color);
-            line-height: 1.6;
+            line-height: 1.8;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
         }
 
-        /* Improved Banner Style */
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform var(--transition-speed);
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Upgraded Stylish Banner */
         .atlantic-banner {
             text-align: center;
-            padding: 15px 0;
+            padding: 25px 0;
             margin: 0;
-            border-top: 2px solid var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-            background-color: white;
+            background-color: var(--card-bg);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px var(--shadow-color);
+            box-shadow: 0 4px 15px var(--shadow-color);
+            transition: background-color var(--transition-speed);
         }
 
         .atlantic-banner h1 {
-            font-family: "Times New Roman", Times, serif;
-            font-size: 2.8rem;
-            font-weight: normal;
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
             margin: 0;
             padding: 0;
-            color: var(--primary-color);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 4px;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            transition: transform 0.4s ease;
         }
 
         .atlantic-banner h1:hover {
-            color: var(--accent-color);
-            transition: color 0.3s ease;
+            transform: scale(1.02);
         }
 
         /* Intro Section */
         .intro.section {
-            padding: var(--section-padding);
-            background-color: white;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .intro .units-row {
-            align-items: center;
+            padding: 80px 0 60px;
+            background-color: var(--bg-color);
+            text-align: center;
         }
 
         .intro h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
         }
 
         .intro h1 span {
             color: var(--accent-color);
+            font-style: italic;
         }
 
         .intro p {
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 0 20px;
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--light-text);
         }
 
         /* Article Sections */
         .section {
             padding: var(--section-padding);
-            background-color: white;
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
         }
 
         .section h1 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--border-color);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--text-color);
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h1::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Modern Grid Layout for Articles */
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 0;
+            list-style: none;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .article-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 30px;
+            transition: all var(--transition-speed);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 6px var(--shadow-color);
+        }
+
+        .article-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px var(--shadow-color);
+            border-color: var(--accent-color);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            font-family: sans-serif;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* Article List */
-        .article-list {
-            list-style: none;
-            padding: 0;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .article-list li {
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 1px dashed var(--border-color);
-        }
-
-        .article-list li:last-child {
-            border-bottom: none;
-        }
-
-        .article-list a {
-            text-decoration: none;
-            color: var(--primary-color);
-            font-size: 1.3rem;
+        .article-tag {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
             font-weight: bold;
-            transition: color 0.3s ease;
         }
 
-        .article-list a:hover {
+        .article-read-time {
+            color: var(--light-text);
+        }
+
+        .article-card a.title {
+            text-decoration: none;
+            color: var(--text-color);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+            transition: color var(--transition-speed);
+        }
+
+        .article-card a.title:hover {
             color: var(--accent-color);
-            text-decoration: underline;
         }
 
         .article-date {
             font-size: 0.9rem;
             color: var(--light-text);
-            margin: 5px 0;
+            margin-bottom: 15px;
             display: block;
+            font-style: italic;
         }
 
         .article-intro {
-            font-size: 1rem;
-            color: var(--text-color);
-            line-height: 1.6;
-            margin-top: 8px;
+            font-size: 1.05rem;
+            color: var(--light-text);
+            flex-grow: 1;
+            margin: 0;
         }
 
         /* Footer */
         footer {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 30px 0;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 50px 0;
             text-align: center;
+            margin-top: 40px;
         }
 
         footer p {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
+            color: var(--text-color);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
         }
 
         .social {
@@ -169,17 +251,19 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
         }
 
         .social a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
+            color: var(--text-color);
+            font-size: 1.6rem;
+            transition: color var(--transition-speed), transform var(--transition-speed);
+            display: inline-block;
         }
 
         .social a:hover {
             color: var(--accent-color);
+            transform: translateY(-3px);
         }
 
         /* Typed.js Animation */
@@ -187,63 +271,21 @@
             min-height: 1.5em;
         }
 
-        /* Selection Highlight */
-        ::selection {
-            background-color: var(--highlight-color);
-            color: var(--text-color);
-        }
-
-        ::-moz-selection {
-            background-color: var(--highlight-color);
-            color: var(--text-color);
-        }
-
         /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .atlantic-banner h1 {
-                font-size: 2rem;
-            }
-            
-            .intro h1 {
-                font-size: 2rem;
-            }
-            
-            .intro .unit-100 {
-                text-align: center;
-                margin-bottom: 20px;
-            }
-            
-            .section h1 {
-                font-size: 1.7rem;
-            }
-            
-            .article-list a {
-                font-size: 1.1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .atlantic-banner h1 {
-                font-size: 1.5rem;
-            }
-            
-            .intro h1 {
-                font-size: 1.5rem;
-            }
-            
-            .section h1 {
-                font-size: 1.4rem;
-            }
-            
-            .article-list a {
-                font-size: 1rem;
-            }
+            .atlantic-banner h1 { font-size: 2.2rem; }
+            .intro h1 { font-size: 2.2rem; }
+            .section { padding: 40px 0; }
+            .article-grid { grid-template-columns: 1fr; padding: 0 20px; }
         }
     </style>
 </head>
 <body>
 
     <div class="atlantic-banner">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+            <i class="fas fa-moon"></i>
+        </button>
         <h1><a href="/" style="text-decoration: none; color: inherit;">JANALA.PAGE</a></h1>
     </div>
 
@@ -260,55 +302,79 @@
         </div>
     </div>
 
-    <div class="work section second" id="experiences">
+    <div class="work section" id="experiences">
         <div class="container">
             <h1>International</h1>
-            <ul class="article-list list-flat">
-                 <li>
-                    <a href="INT page 1.html">Article One Title Here</a>
-                    <span class="article-date">Publication Date (e.g., April 22, 2025)</span>
-                    <p class="article-intro">Brief introduction or summary of International Article One...</p>
+            <ul class="article-grid">
+                 <li class="article-card">
+                    <div class="article-meta">
+                        <span class="article-tag">Geopolitics</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 5 min read</span>
+                    </div>
+                    <a href="INT page 1.html" class="title">Article One Title Here</a>
+                    <span class="article-date">April 22, 2025</span>
+                    <p class="article-intro">Brief introduction or summary of International Article One detailing the shifting dynamics of global power and diplomacy...</p>
                  </li>
-                 <li>
-                    <a href="INT page 2.html">Article Two Title Here</a>
-                    <span class="article-date">Publication Date (e.g., April 23, 2025)</span>
-                    <p class="article-intro">Brief introduction or summary of International Article Two...</p>
+                 <li class="article-card">
+                    <div class="article-meta">
+                        <span class="article-tag">Economy</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 8 min read</span>
+                    </div>
+                    <a href="INT page 2.html" class="title">Article Two Title Here</a>
+                    <span class="article-date">April 23, 2025</span>
+                    <p class="article-intro">A deep dive into the economic policies shaping the new decade and what they mean for developing nations...</p>
                  </li>
              </ul>
         </div>
     </div>
 
-    <div class="award section second" id="achievements">
+    <div class="award section" id="achievements">
         <div class="container">
             <h1>Literature</h1>
-             <ul class="article-list list-flat">
-                 <li>
-                      <a href="LIT Page 1.html">Literature Article One Title</a>
-                      <span class="article-date">Publication Date</span>
-                      <p class="article-intro">Brief introduction or summary of Literature Article One...</p>
+             <ul class="article-grid">
+                 <li class="article-card">
+                    <div class="article-meta">
+                        <span class="article-tag">Review</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 6 min read</span>
+                    </div>
+                      <a href="LIT Page 1.html" class="title">Literature Article One Title</a>
+                      <span class="article-date">May 10, 2025</span>
+                      <p class="article-intro">An analytical look at modern literary movements and how classical tropes are being reimagined today...</p>
                  </li>
-                 <li>
-                      <a href="LIT Page 2.html">Literature Article Two Title</a>
-                      <span class="article-date">Publication Date</span>
-                      <p class="article-intro">Brief introduction or summary of Literature Article Two...</p>
+                 <li class="article-card">
+                    <div class="article-meta">
+                        <span class="article-tag">Essay</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 10 min read</span>
+                    </div>
+                      <a href="LIT Page 2.html" class="title">Literature Article Two Title</a>
+                      <span class="article-date">May 15, 2025</span>
+                      <p class="article-intro">Exploring the boundaries of narrative structure in the 21st century novel through various critical lenses...</p>
                  </li>
              </ul>
         </div>
     </div>
 
-    <div class="skills section second" id="skills">
+    <div class="skills section" id="skills">
         <div class="container">
             <h1>Technology</h1>
-             <ul class="article-list list-flat">
-                 <li>
-                      <a href="Tech page 1.html">Technology Article One Title</a>
-                      <span class="article-date">Publication Date</span>
-                      <p class="article-intro">Brief introduction or summary of Technology Article One...</p>
+             <ul class="article-grid">
+                 <li class="article-card">
+                    <div class="article-meta">
+                        <span class="article-tag">Innovation</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 4 min read</span>
+                    </div>
+                      <a href="Tech page 1.html" class="title">Technology Article One Title</a>
+                      <span class="article-date">June 02, 2025</span>
+                      <p class="article-intro">How emerging technologies are subtly altering human interaction and our perception of community...</p>
                  </li>
-                  <li>
-                      <a href="technology_article_two.html">Technology Article Two Title</a>
-                      <span class="article-date">Publication Date</span>
-                      <p class="article-intro">Brief introduction or summary of Technology Article Two...</p>
+                  <li class="article-card">
+                    <div class="article-meta">
+                        <span class="article-tag">Ethics</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 7 min read</span>
+                    </div>
+                      <a href="technology_article_two.html" class="title">Technology Article Two Title</a>
+                      <span class="article-date">June 18, 2025</span>
+                      <p class="article-intro">The philosophical implications of artificial intelligence and the future of creative endeavors...</p>
                  </li>
              </ul>
         </div>
@@ -316,19 +382,13 @@
 
     <footer>
         <div class="container">
-            <div class="units-row">
-                <div class="unit-50">
-                    <p>Connect with me here >>>>>>>>>>>>></p>
-                </div>
-                <div class="unit-50">
-                    <ul class="social list-flat right">
-                        <li><a href="mailto:contact@janala.page"><i class="fas fa-envelope"></i></a></li>
-                        <li><a href="http://twitter.com/flamekaizar" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="http://dribbble.com/flamekaizar" target="_blank"><i class="fab fa-dribbble"></i></a></li>
-                        <li><a href="http://behance.com/flamekaizar" target="_blank"><i class="fab fa-behance"></i></a></li>
-                    </ul>
-                </div>
-            </div>
+            <p>Connect with the author</p>
+            <ul class="social">
+                <li><a href="mailto:contact@janala.page" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#" target="_blank" aria-label="Medium"><i class="fab fa-medium"></i></a></li>
+                <li><a href="#" target="_blank" aria-label="Substack"><i class="fas fa-bookmark"></i></a></li>
+            </ul>
         </div>
     </footer>
 
@@ -341,14 +401,40 @@
         function newTyped(){}
         $(function(){
             $("#typed").typed({
-                strings: ["hard", "fun", "interesting", "depressing", "full of struggle", "a journey of wisdom", "Worth living"],
-                typeSpeed: 90,
-                backDelay: 700,
+                strings: ["complex.", "a canvas of ideas.", "meant to be questioned.", "worth documenting.", "a journey of wisdom."],
+                typeSpeed: 60,
+                backDelay: 1500,
                 contentType: "html",
                 loop: true,
                 resetCallback: function(){newTyped()}
             });
-            $(".reset").click(function(){$("#typed").typed("reset")});
+        });
+
+        // Dark Mode Toggle Logic
+        const toggleBtn = document.getElementById('theme-toggle');
+        const icon = toggleBtn.querySelector('i');
+        
+        // Check for saved user preference
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            if (currentTheme === 'dark') {
+                icon.classList.replace('fa-moon', 'fa-sun');
+            }
+        }
+
+        toggleBtn.addEventListener('click', function() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            
+            if (isDark) {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                icon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            }
         });
     </script>
 </body>
