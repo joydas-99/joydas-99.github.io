@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 import os
-import urllib.parse
 
 # Create a folder to hold the article pages
 os.makedirs('articles', exist_ok=True)
@@ -10,24 +9,25 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
 }
 
-# 1. We point directly to Prothom Alo's hidden backend Data API for the Opinion section
+# The hidden Prothom Alo Data API
 api_url = "https://www.prothomalo.com/api/v1/stories?section=opinion&limit=15"
 
-# 2. We wrap it in a free proxy so Cloudflare can't see GitHub's IP address
-proxy_api_url = f"https://api.allorigins.win/raw?url={urllib.parse.quote(api_url)}"
+# Using a more reliable proxy (CodeTabs)
+proxy_api_url = f"https://api.codetabs.com/v1/proxy?quest={api_url}"
 
-print("Fetching links from the hidden Data API...")
+print("Fetching links from the hidden Data API using CodeTabs proxy...")
+response = requests.get(proxy_api_url, headers=headers)
+
+# Adding a safety net to see exactly what the proxy returns if it fails
 try:
-    response = requests.get(proxy_api_url, headers=headers)
     data = response.json()
 except Exception as e:
-    print(f"Failed to contact the API. Error: {e}")
+    print(f"Failed to parse JSON. The proxy returned this instead:\n{response.text[:500]}")
     exit(1)
 
 html_index = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>Motamot</title></head><body><h1>Motamot (Opinions)</h1><ul>"
 
 count = 0
-# The API returns a neat list of articles without any messy website code!
 for story in data.get('stories', []):
     if count >= 15:
         break
@@ -41,8 +41,8 @@ for story in data.get('stories', []):
     print(f"Downloading: {title}")
     
     try:
-        # We also route the article request through the proxy to bypass security
-        proxy_art_url = f"https://api.allorigins.win/raw?url={urllib.parse.quote(link)}"
+        # Route the article request through the new proxy as well
+        proxy_art_url = f"https://api.codetabs.com/v1/proxy?quest={link}"
         art_res = requests.get(proxy_art_url, headers=headers, timeout=15)
         soup_art = BeautifulSoup(art_res.content, 'html.parser')
         
