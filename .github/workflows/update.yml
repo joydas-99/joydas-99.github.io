@@ -1,8 +1,8 @@
 name: Fetch News
 on:
   schedule:
-    - cron: '0 */2 * * *' # Runs automatically every 2 hours
-  workflow_dispatch: # Allows you to trigger it manually
+    - cron: '0 */2 * * *' 
+  workflow_dispatch: 
 
 jobs:
   build:
@@ -16,7 +16,8 @@ jobs:
           python-version: '3.10'
           
       - name: Install dependencies
-        run: pip install requests beautifulsoup4 lxml
+        # Notice we added cloudscraper here!
+        run: pip install requests beautifulsoup4 lxml cloudscraper
         
       - name: Run scraper
         run: python scraper.py
