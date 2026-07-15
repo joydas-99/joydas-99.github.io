@@ -1,72 +1,51 @@
-import cloudscraper
+import requests
 from bs4 import BeautifulSoup
 import os
-import re
+import urllib.parse
 
 # Create a folder to hold the article pages
 os.makedirs('articles', exist_ok=True)
 
-# Create a Cloudscraper instance to bypass the security wall
-scraper = cloudscraper.create_scraper(browser={
-    'browser': 'chrome',
-    'platform': 'windows',
-    'desktop': True
-})
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+}
 
-motamot_url = "https://www.prothomalo.com/opinion"
-print(f"Fetching: {motamot_url}")
+# 1. We point directly to Prothom Alo's hidden backend Data API for the Opinion section
+api_url = "https://www.prothomalo.com/api/v1/stories?section=opinion&limit=15"
 
-# Use the scraper instead of standard requests
-response = scraper.get(motamot_url)
-html_content = response.text
+# 2. We wrap it in a free proxy so Cloudflare can't see GitHub's IP address
+proxy_api_url = f"https://api.allorigins.win/raw?url={urllib.parse.quote(api_url)}"
 
-seen_links = set()
-article_urls = []
-
-print("Scanning for hidden links...")
-
-# 1. Search for normal links
-soup_main = BeautifulSoup(html_content, 'html.parser')
-for a in soup_main.find_all('a', href=True):
-    href = a['href']
-    if '/opinion/' in href and '/author/' not in href:
-        url = href if href.startswith('http') else "https://www.prothomalo.com" + href
-        if url not in seen_links:
-            seen_links.add(url)
-            article_urls.append(url)
-
-# 2. X-Ray Method: Search the hidden Javascript data package directly
-slugs = re.findall(r'"slug":\s*"([^"]+)"', html_content)
-for slug in slugs:
-    if slug.startswith('opinion/') and '/author/' not in slug:
-        url = "https://www.prothomalo.com/" + slug
-        if url not in seen_links:
-            seen_links.add(url)
-            article_urls.append(url)
-
-print(f"Found {len(article_urls)} potential articles.")
+print("Fetching links from the hidden Data API...")
+try:
+    response = requests.get(proxy_api_url, headers=headers)
+    data = response.json()
+except Exception as e:
+    print(f"Failed to contact the API. Error: {e}")
+    exit(1)
 
 html_index = "<!DOCTYPE html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>Motamot</title></head><body><h1>Motamot (Opinions)</h1><ul>"
 
 count = 0
-for link in article_urls:
+# The API returns a neat list of articles without any messy website code!
+for story in data.get('stories', []):
     if count >= 15:
         break
         
-    print(f"Downloading: {link}")
+    title = story.get('headline', 'No Title')
+    link = story.get('url', '')
+    
+    if not link:
+        continue
+
+    print(f"Downloading: {title}")
+    
     try:
-        # Use the scraper to bypass security on the article page too
-        art_res = scraper.get(link)
+        # We also route the article request through the proxy to bypass security
+        proxy_art_url = f"https://api.allorigins.win/raw?url={urllib.parse.quote(link)}"
+        art_res = requests.get(proxy_art_url, headers=headers, timeout=15)
         soup_art = BeautifulSoup(art_res.content, 'html.parser')
         
-        title_tag = soup_art.find('title')
-        if not title_tag:
-            continue
-            
-        title = title_tag.text.replace(' - Prothom Alo', '').replace('প্রথম আলো', '').strip()
-        if title.endswith('-'):
-            title = title[:-1].strip()
-            
         paragraphs = soup_art.find_all('p')
         article_text = ""
         for p in paragraphs:
